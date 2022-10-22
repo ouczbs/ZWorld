@@ -1,6 +1,4 @@
 --lua class : SurviveGameMode
-require("LuaPanda").start("127.0.0.1",8818)
-require "UnLua"
 ---@type MMOGameMode
 local class = UnLua.Class()
 

@@ -1,3 +1,4 @@
+
 local GA = {
 	initManagerList = {} ,
 }
@@ -18,10 +19,10 @@ require "GameConfig.GC"
 require "GamePlay.GP"
 require "GPModule.GPM"
 
-require "GameManager.GM"
+require "GameMaster.GM"
 
-require "GameWorld.GW"
-require "GWModule.GWM"
+--require "GameWorld.GW"
+--require "GWModule.GWM"
 
 require "Network.Network_Module"
 
@@ -48,7 +49,7 @@ function class:registerUManager(key , luaclass)
 end
 function class:InitializeWorld(WorldContext)
     self._uWorldContext = WorldContext
-    self:registerUManager("MessageManager" , GA.Manager.MessageManager)
+    --self:registerUManager("MessageManager" , GA.Manager.MessageManager)
 
     self:registerLuaManager("EventBus" , GA.Event.EventBus)
     self:registerLuaManager("InterfaceBus" , GA.Interface.InterfaceBus)

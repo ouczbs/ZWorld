@@ -2,7 +2,7 @@
 local InscSequence = class(GA.Core,"InscSequence")
 
 
-function InscSequence:new(seed)
+function InscSequence:ctor(seed)
     self.seed = seed
 end
 

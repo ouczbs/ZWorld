@@ -1,1 +1,1 @@
-require "GameConfig.UI.UIConfig.lua"
+require "GameConfig.UI.UIConfig"

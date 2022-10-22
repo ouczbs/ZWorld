@@ -1,6 +1,6 @@
 import os
 import re
-module_dir_list = ["GameCore" , "GameManager" , "GamePlay"  ,"GameWorld", "GPModule" ,"GWModule" ]
+module_dir_list = ["GameCore" , "GameMaster" , "GamePlay"  ,"GameWorld", "GPModule" ,"GWModule" ]
 module_file_list = ["GC.lua" , "GM.lua" , "GP.lua"  ,"GW.lua" ,"GPM.lua" ,"GWM.lua"]
 def CheckFileRequire(module_file , require_list):
     require_dict = {}

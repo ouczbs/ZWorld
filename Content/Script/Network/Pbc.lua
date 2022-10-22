@@ -1,10 +1,12 @@
 
+require("LuaPanda").start("127.0.0.1",8818)
 require "Network.ProtoDown"
 require "Network.ProtoUp"
 local ProtoId = require "Network.EProtoId"
 local _pb     = require "pb"
 local reversedProtoId = {}
 local pb_path = "E:\\ouczbs\\Survive\\Content" .. "\\Script\\Network\\pb\\"
+
 local class = class(GA.Network, "Pbc")
 local ProtoPb = {}
 local ProtoMap = {}

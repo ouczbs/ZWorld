@@ -94,7 +94,7 @@ local function safe_pairs(t)
 end
 
 local function load_error_handler(err)
-    local msg = err .. "\n" .. debug.traceback()
+    local msg = err .. "\n" -- .. debug.traceback()
     UnLua.LogError(msg)
 end
 

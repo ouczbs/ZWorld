@@ -1,6 +1,6 @@
 
 GA.Config = GA.Config or {}
 
-require "GamePlay.Config.GameConst"
-require "GamePlay.Config.LuaType"
-require "GamePlay.Config.Refers"
+require "GameConfig.Config.GameConst"
+require "GameConfig.Config.LuaType"
+require "GameConfig.Config.Refers"
