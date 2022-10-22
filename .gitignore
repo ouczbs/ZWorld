@@ -1,0 +1,15 @@
+.vs
+.vscode
+Binaries
+Intermediate
+Content\AdvancedLocomotionV4
+Content\AdvancedVillagePack
+Content\Ultimate_Traversal_Anims
+Plugins\**\Binaries
+Plugins\**\Intermediate
+Survive.sln
+Saved
+Content/Genshin/
+*.sln
+*.uproject
+Saved

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "Content/Script"
+		},
+		{
+			"path": "Proto"
+		},
+		{
+			"path": "Source"
+		}
+	],
+	"settings": {}
+}

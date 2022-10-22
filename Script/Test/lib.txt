@@ -1,0 +1,47 @@
+struct FExportedUClassHelper { 
+    typedef UClass ClassType; 
+    static FExportedUClassHelper StaticInstance; UnLua::TExportedClass<true, UClass > *ExportedClass; 
+    ~FExportedUClassHelper() {
+         delete ExportedClass; 
+    }
+    FExportedUClassHelper() : ExportedClass(nullptr) { 
+        UnLua::TExportedClass<true, UClass > *Class = (UnLua::TExportedClass<true, UClass >*)UnLua::FindExportedClass("UClass");
+        if (!Class) { 
+            ExportedClass = new UnLua::TExportedClass<true, UClass >("UClass", nullptr); 
+            UnLua::ExportClass((UnLua::IExportedClass*)ExportedClass); 
+            Class = ExportedClass; 
+        }
+        Class->AddLib(UClassLib);
+    }
+};
+FExportedUClassHelper FExportedUClassHelper::StaticInstance;
+
+struct FExportedUDataTableFunctionLibraryHelper { 
+    typedef UDataTableFunctionLibrary ClassType; 
+    static FExportedUDataTableFunctionLibraryHelper StaticInstance; 
+    UnLua::TExportedClass<true, UDataTableFunctionLibrary > *ExportedClass; 
+    ~FExportedUDataTableFunctionLibraryHelper() { delete ExportedClass; } 
+    FExportedUDataTableFunctionLibraryHelper() : ExportedClass(nullptr) {
+        UnLua::TExportedClass<true, UDataTableFunctionLibrary > *Class = (UnLua::TExportedClass<true, UDataTableFunctionLibrary >*)UnLua::FindExportedClass("UDataTableFunctionLibrary"); 
+        if (!Class) {
+            ExportedClass = new UnLua::TExportedClass<true, UDataTableFunctionLibrary >("UDataTableFunctionLibrary", nullptr);
+            UnLua::ExportClass((UnLua::IExportedClass*)ExportedClass); 
+            Class = ExportedClass; 
+        }
+        Class->AddStaticFunction<bool,const UDataTable*, FName, void*>("GetTableDataRowFromName", &ClassType::Generic_GetDataTableRowFromName);
+        Class->AddLib(UDataTableLib);
+    } 
+};
+FExportedUDataTableFunctionLibraryHelper FExportedUDataTableFunctionLibraryHelper::StaticInstance;
+
+Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction_3"
+   FunctionReference=(MemberParent=Class'"/Script/Engine.KismetSystemLibrary"',MemberName="LoadClassAsset_Blocking")
+   NodePosX=912
+   NodePosY=128
+   NodeGuid=332189D74EB607935A45F4B96FEEC653
+   CustomProperties Pin (PinId=DE35B01A451BE017B365D380A88D16F3,PinName="execute",PinToolTip="\n执行",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=True,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=9CCA27624BC21D8EA68BF8908C721285,PinName="then",PinToolTip="\n执行",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=True,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=17BC806245F49538BA3072AB83AE78B8,PinName="self",PinFriendlyName=NSLOCTEXT("K2Node", "Target", "Target"),PinToolTip="目标\nKismet系统库 对象引用",PinType.PinCategory="object",PinType.PinSubCategory="",PinType.PinSubCategoryObject=Class'"/Script/Engine.KismetSystemLibrary"',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=True,DefaultObject="/Script/Engine.Default__KismetSystemLibrary",PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=F3943C35413C850C9D4C43AC3E306598,PinName="AssetClass",PinToolTip="Asset Class\nObject 软类引用",PinType.PinCategory="softclass",PinType.PinSubCategory="",PinType.PinSubCategoryObject=Class'"/Script/CoreUObject.Object"',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=True,LinkedTo=(K2Node_BreakStruct_0 5488C3F5486C6D939263618C6C33507B,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=59E43EDD41B31A778B3715B5CB434940,PinName="ReturnValue",PinToolTip="Return Value\nObject 类引用\n\n立即解析或加载软类引用，此操作将导致卡顿，如可能将使用异步加载类资产",Direction="EGPD_Output",PinType.PinCategory="class",PinType.PinSubCategory="",PinType.PinSubCategoryObject=Class'"/Script/CoreUObject.Object"',PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+End Object

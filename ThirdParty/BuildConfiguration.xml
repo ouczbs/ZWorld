@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">
+<BuildConfiguration>
+	<bAllowXGE>false</bAllowXGE>
+</BuildConfiguration>
+
+<LocalExecutor>
+	<ProcessorCountMultiplier>6</ProcessorCountMultiplier>
+	<MaxProcessorCount>12</MaxProcessorCount>
+</LocalExecutor>
+
+<WindowsPlatform>
+	<PCHMemoryAllocationFactor>1000</PCHMemoryAllocationFactor>
+</WindowsPlatform>
+
+</Configuration>
