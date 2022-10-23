@@ -10,7 +10,7 @@ public class ZWorld : ModuleRules
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "ApexDestruction", });
 
-        PublicDependencyModuleNames.AddRange(new string[] { "UnLua", "Lua" });
+        PublicDependencyModuleNames.AddRange(new string[] { "UnLua", "Lua" , "ZLuaLib"});
         PrivateDependencyModuleNames.AddRange(new string[] { });
         // avoid winsock.h and winsock2.h conflicts
         PublicDefinitions.Add("ASIO_STANDALONE");

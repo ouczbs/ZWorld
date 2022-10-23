@@ -1,4 +1,4 @@
-require "UnLua"
+
 local class = Class(GA.Character ,"PlayCharacter")
 function class:Initialize(Initializer)
     self.super.Initialize(self)

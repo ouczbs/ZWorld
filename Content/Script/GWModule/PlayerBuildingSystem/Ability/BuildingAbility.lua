@@ -1,4 +1,4 @@
-require "UnLua"
+
 local class = Class(GA.Ability, "BuildingAbility")
 
 function class:Initialize(Initializer)

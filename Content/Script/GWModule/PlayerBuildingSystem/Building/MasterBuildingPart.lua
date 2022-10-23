@@ -1,4 +1,4 @@
-require "UnLua"
+
 local class = Class(GA.Building, "MasterBuildingPart")
 
 --GameWorld.Building.MasterBuildingPart

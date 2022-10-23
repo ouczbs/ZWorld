@@ -1,5 +1,5 @@
 
-require "UnLua"
+
 local class = Class(GA.Building, "BuildingMaster")
 
 function class:Lua_BuildingTrace()

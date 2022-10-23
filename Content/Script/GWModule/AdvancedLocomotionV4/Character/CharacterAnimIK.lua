@@ -1,5 +1,5 @@
 
-require "UnLua"
+
 local class = Class(GA.Character ,"CharacterAnimIK")
 
 function class:beginPlay()

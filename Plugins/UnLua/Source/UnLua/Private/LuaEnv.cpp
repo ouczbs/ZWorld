@@ -366,7 +366,7 @@ namespace UnLua
 #endif
 
         // loads the buffer as a Lua chunk
-        const int32 Code = luaL_loadbufferx(L, Buffer, Size, fileName, nullptr);
+        const int32 Code = luaL_loadbufferx(L, Buffer, Size, InName, nullptr);
         if (Code != LUA_OK)
         {
             UE_LOG(LogUnLua, Warning, TEXT("Failed to call luaL_loadbufferx, error code: %d"), Code);

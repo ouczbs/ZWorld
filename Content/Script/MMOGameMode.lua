@@ -4,14 +4,16 @@ local class = UnLua.Class()
 
 function class:OverrideInitGame()
     require "World"
-    require "GameGlobal"
+    CreateGlobalVar()
     --创建各种message
     local WorldContext = self:GetWorld()
     gWorld:InitializeWorld(WorldContext)
 end
 function class:ReceiveBeginPlay()
     print("ReceiveBeginPlay GameMode")
-    gWorld:beginPlay()
+    if gWorld then
+        gWorld:beginPlay()
+    end
 end
 
 --[[

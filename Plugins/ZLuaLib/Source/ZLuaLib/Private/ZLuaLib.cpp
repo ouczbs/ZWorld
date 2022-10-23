@@ -9,7 +9,8 @@
 
 void FZLuaLib::StartupModule()
 {
-	FUnLuaDelegates::OnLuaContextInitialized.AddRaw(this , &FZLuaLib::OnRegisterLuaLib);
+	FUnLuaDelegates::OnLuaStateCreated.AddRaw(this , &FZLuaLib::OnRegisterLuaLib);
+	//FUnLuaDelegates::OnLuaContextInitialized.AddRaw(this , &FZLuaLib::OnRegisterLuaLib);
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
 }
 
@@ -18,8 +19,7 @@ void FZLuaLib::ShutdownModule()
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
 }
-void FZLuaLib::OnRegisterLuaLib(){
-	lua_State* L = UnLua::GetState();
+void FZLuaLib::OnRegisterLuaLib(lua_State* L){
 	FLuaProtobuf& LuaProtobuf = FModuleManager::LoadModuleChecked<FLuaProtobuf>(TEXT("LuaProtobuf"));
     LuaProtobuf.RegisterLuaLib(L);
 	//FLibLuasocket& Luasocket = FModuleManager::LoadModuleChecked<FLibLuasocket>(TEXT("LibLuasocket"));

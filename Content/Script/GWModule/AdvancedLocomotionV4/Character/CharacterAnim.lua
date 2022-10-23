@@ -1,6 +1,6 @@
 
 
-require "UnLua"
+
 local class = Class(GA.Character ,"CharacterAnim")
 
 

@@ -1,5 +1,5 @@
 
-require "UnLua"
+
 local class = Class(GA.UI, "LoginWindow" , GA.UI.UIWindow)
 
 class.s_bpWindow = GA.BpClass.UI_LoginWin

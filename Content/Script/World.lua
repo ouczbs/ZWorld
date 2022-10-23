@@ -1,29 +1,13 @@
-
-local GA = {
-	initManagerList = {} ,
-}
-local GW = {
-
-}
-_G.GA = GA
-_G.GW = GW
-function GA:AddInitManager(name , UManager) 
-	self.initManagerList[name] = UManager
+local WITH_LUAIDE_DEBUG = true
+if WITH_LUAIDE_DEBUG then
+    require "socket.core"
+    require("LuaPanda").start("127.0.0.1",8818)
 end
-
-function import(resource)
-	return UE4.UClass.Load(resource)
-end
+require "GameGlobal"
 require "GameCore.GC"
 require "GameConfig.GC"
 require "GamePlay.GP"
-require "GPModule.GPM"
-
 require "GameMaster.GM"
-
---require "GameWorld.GW"
---require "GWModule.GWM"
-
 require "Network.Network_Module"
 
 local class = class(GA,"World")
@@ -103,13 +87,13 @@ end
 
 function class:spawnActor(uclass, uLocation , uRotation , params)
     local transform = UE4.FTransform(uRotation:ToQuat(), uLocation)
-    return self._uWorldContext:SpawnActor(uclass , transform , params and params.collisionHandle or UEnum.ESpawnActorCollisionHandlingMethod.AlwaysSpawn)
+    return self._uWorldContext:SpawnActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn)
 end
 
 function class:spawnLuaActor(luaclass, uLocation , uRotation , params)
     local uclass,modulename = luaclass:GetUnluaBind()
     local transform = UE4.FTransform(uRotation:ToQuat(), uLocation)
-    return self._uWorldContext:SpawnLuaActor(uclass , transform , params and params.collisionHandle or UEnum.ESpawnActorCollisionHandlingMethod.AlwaysSpawn , self , self, modulename)
+    return self._uWorldContext:SpawnLuaActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn , self , self, modulename)
 end
 
 

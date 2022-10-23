@@ -1,5 +1,0 @@
-string,string,json,json,bool,bool
-Name,Class,ConditionTags,ActiveTags,IsOnly,IsPersistence
-"ID","Request Path","execute condition tags","add to owner tags","is only","is persistence"
-"Movement","/Game/Blueprints/Request/GR_Movement.GR_Movement_C","","","True","True"
-"None","None","","","True","True"

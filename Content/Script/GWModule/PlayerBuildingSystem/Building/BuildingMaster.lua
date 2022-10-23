@@ -1,5 +1,5 @@
 
-require "UnLua"
+
 local class = Class(GA.Building, "BuildingMaster")
 
 --GameWorld.Building.BuildingMaster

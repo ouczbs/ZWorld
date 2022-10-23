@@ -1,5 +1,5 @@
 --lua class : test_C
-require "UnLua"
+
 local class = Class(GA.Manager, "MessageManager")
 
 function class:GetUnluaBind()

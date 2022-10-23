@@ -1,5 +1,4 @@
 
-require("LuaPanda").start("127.0.0.1",8818)
 require "Network.ProtoDown"
 require "Network.ProtoUp"
 local ProtoId = require "Network.EProtoId"

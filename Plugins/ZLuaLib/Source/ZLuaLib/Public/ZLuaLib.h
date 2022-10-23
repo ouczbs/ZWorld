@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
-
+struct lua_State;
 class FZLuaLib : public IModuleInterface
 {
 public:
@@ -13,5 +13,5 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 
-	void OnRegisterLuaLib();
+	void OnRegisterLuaLib(lua_State* L);
 };

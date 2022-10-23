@@ -1,4 +1,4 @@
-require "UnLua"
+
 local class = Class(GA.UI.Building, "MasterRadialMenu")
 
 --GameWorld.UI.Building.MasterRadialMenu
