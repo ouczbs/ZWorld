@@ -1,35 +1,35 @@
 local BpType = {
-	-- ../../../../../ouczbs/Survive/Content/\Blueprints start
+	-- ../../../../../ouczbs/ZWorld/Content/\Blueprints start
+	BP_BasePlayAnim = '/Game/Blueprints/Character/BP_BasePlayAnim' ,
+	BP_OverLayAnim = '/Game/Blueprints/Character/BP_OverLayAnim' ,
+	BP_PlayAnim = '/Game/Blueprints/Character/BP_PlayAnim' ,
+	BP_PlayCharacter = '/Game/Blueprints/Character/BP_PlayCharacter' ,
+	BP_PlayCharacterBase = '/Game/Blueprints/Character/BP_PlayCharacterBase' ,
+	BP_PlayerController = '/Game/Blueprints/Character/BP_PlayerController' ,
+	BP_PlayerState = '/Game/Blueprints/Character/BP_PlayerState' ,
+	BP_GameOwner = '/Game/Blueprints/Owner/BP_GameOwner' ,
 	BP_LuaManager = '/Game/Blueprints/System/BP_LuaManager' ,
 	BP_MessageManager = '/Game/Blueprints/System/BP_MessageManager' ,
-	UI_AndriodWindow = '/Game/Blueprints/UI/UI_AndriodWindow' ,
-	-- ../../../../../ouczbs/Survive/Content/\Blueprints end
+	UI_EditorAnimRetarget = '/Game/Blueprints/Widget/Editor/UI_EditorAnimRetarget' ,
+	UI_FoldPanel = '/Game/Blueprints/Widget/Editor/UI_FoldPanel' ,
+	UI_SourceComboBox = '/Game/Blueprints/Widget/Editor/UI_SourceComboBox' ,
+	-- ../../../../../ouczbs/ZWorld/Content/\Blueprints end
 
-	-- ../../../../../ouczbs/Survive/Content/\AdvancedLocomotionV4\Blueprints start
-	ALS_AnimMan_CharacterBP = '/Game/AdvancedLocomotionV4/Blueprints/CharacterLogic/ALS_AnimMan_CharacterBP' ,
-	ALS_Base_CharacterBP = '/Game/AdvancedLocomotionV4/Blueprints/CharacterLogic/ALS_Base_CharacterBP' ,
-	-- ../../../../../ouczbs/Survive/Content/\AdvancedLocomotionV4\Blueprints end
+	-- ../../../../../ouczbs/ZWorld/Content/\UI start
+	UI_LoginWin = '/Game/UI/UI_LoginWin' ,
+	UI_MainWin = '/Game/UI/UI_MainWin' ,
+	UI_FunBtnEntry = '/Game/UI/Entry/UI_FunBtnEntry' ,
+	-- ../../../../../ouczbs/ZWorld/Content/\UI end
 
-	-- ../../../../../ouczbs/Survive/Content/\PlayerBuildingSystem\Blueprints start
-	BP_BuildingAbility = '/Game/PlayerBuildingSystem/Blueprints/BP_BuildingAbility' ,
-	BP_CeilingGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_CeilingGrid' ,
-	BP_DoorGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_DoorGrid' ,
-	BP_FoundationGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_FoundationGrid' ,
-	BP_MasterGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_MasterGrid' ,
-	BP_PillerGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_PillerGrid' ,
-	BP_StairsGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_StairsGrid' ,
-	BP_WallGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_WallGrid' ,
-	BP_WindowGrid = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildGrids/BP_WindowGrid' ,
-	BP_DoorFrame_01 = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildObjects/BP_DoorFrame_01' ,
-	BP_MasterBuildPart = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildObjects/BP_MasterBuildPart' ,
-	BP_WindowFrame_01 = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildObjects/BP_WindowFrame_01' ,
-	BP_BuildMaster = '/Game/PlayerBuildingSystem/Blueprints/BuildingBlueprints/BuildTypes/BP_BuildMaster' ,
-	-- ../../../../../ouczbs/Survive/Content/\PlayerBuildingSystem\Blueprints end
+	-- ../../../../../ouczbs/ZWorld/Content/\Resource\Blueprints start
+	BP_LightStudio = '/Game/Resource/Blueprints/BP_LightStudio' ,
+	-- ../../../../../ouczbs/ZWorld/Content/\Resource\Blueprints end
 
-	-- ../../../../../ouczbs/Survive/Content/\TouchSystem\Blueprints start
+	-- ../../../../../ouczbs/ZWorld/Content/\TouchSystem\Blueprints start
+	UI_Camera = '/Game/TouchSystem/Blueprints/UI/UI_Camera' ,
+	UI_Joystick = '/Game/TouchSystem/Blueprints/UI/UI_Joystick' ,
 	UI_TouchWindow = '/Game/TouchSystem/Blueprints/UI/UI_TouchWindow' ,
-	-- ../../../../../ouczbs/Survive/Content/\TouchSystem\Blueprints end
-	UI_LoginWin = '/Game/UI/UI_LoginWin.UI_LoginWin',
-	UI_MainWin = '/Game/UI/UI_MainWin.UI_MainWin',
+	-- ../../../../../ouczbs/ZWorld/Content/\TouchSystem\Blueprints end
+	
 }
-GA.Config.BpType = BpType
+GA.BpType = BpType

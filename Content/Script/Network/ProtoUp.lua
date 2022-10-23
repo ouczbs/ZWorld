@@ -20,7 +20,7 @@ setmetatable(upMeta, {__call = function(t, msg , request, handle)
         response = request.request,
     }
     if handle then 
-        pbc.RegisterHandle(wrap.request , handle)
+        pbc:RegisterHandle(wrap.request , handle)
     end
     pbc.Send( pbc.EncodeWrap(wrap) , request.type, t.id )
 end

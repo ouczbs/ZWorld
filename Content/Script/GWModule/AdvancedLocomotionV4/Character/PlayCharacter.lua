@@ -36,8 +36,8 @@ function class:ReceiveBeginPlay()
     print(self.FirstPersonCameraSocket)
     self:viewModeChanged()
     local animInstance = self.Mesh:GetAnimInstance()
-    --UE4.UALS_Interface_C["Set ALS_ViewMode BPI"](animInstance, self.ViewMode )
-    --print(UE4.UALS_Interface_C["Set ALS_ViewMode BPI"],"==================")
+    --UE.UALS_Interface_C["Set ALS_ViewMode BPI"](animInstance, self.ViewMode )
+    --print(UE.UALS_Interface_C["Set ALS_ViewMode BPI"],"==================")
     --print("ReceiveBeginPlay BaseCharacter")
 end
     

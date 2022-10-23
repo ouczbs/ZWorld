@@ -4,7 +4,7 @@ local value = GA.Core.Value
 function class:ctor(X ,Y)
     self.X = X or 0.0
     self.Y = Y or 0.0
-    self.vector = UE4.FVector2D(self.X, self.Y)
+    self.vector = UE.FVector2D(self.X, self.Y)
 end
 
 function class:set(X , Y)

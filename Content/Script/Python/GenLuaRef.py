@@ -21,8 +21,8 @@ def parseFiles(root_dir , rel_dir  , callback = parseBPFile):
     output_List_BpClass.append("\t-- {0} end\n".format(root_dir))
 def AutoGenBlueprintTypeRefForLua(root_dir):
     UPrint("excute ", root_dir, "AutoGenBlueprintTypeRefForLua")
-    out_file = root_dir + "/Script/GamePlay/Gen/BlueprintTypeGen.lua";
-    out_file2 = root_dir + "/Script/GamePlay/Gen/BpClass.lua";
+    out_file = root_dir + "/Script/GameConfig/Gen/BlueprintTypeGen.lua";
+    out_file2 = root_dir + "/Script/GameConfig/Gen/BpClass.lua";
     output_List.append("local BpType = {")
     s_bp = "Blueprints"
     s_ui = "UI"

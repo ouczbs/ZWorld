@@ -31,11 +31,11 @@ end
 
 function class:calcuteDirection(txt)
     local velocity= self.b_player:GetVelocity()
-    local zero = UE4.FVector(0, 0, 0)
-    local notZero = UE4.UKismetMathLibrary.NotEqual_VectorVector(velocity ,zero)
+    local zero = UE.FVector(0, 0, 0)
+    local notZero = UE.UKismetMathLibrary.NotEqual_VectorVector(velocity ,zero)
     if notZero then
-        local LastVelocityRotation = UE4.UKismetMathLibrary.Conv_VectorToRotator(velocity)
-        local diff = UE4.UKismetMathLibrary.NormalizedDeltaRotator(velocity)
+        local LastVelocityRotation = UE.UKismetMathLibrary.Conv_VectorToRotator(velocity)
+        local diff = UE.UKismetMathLibrary.NormalizedDeltaRotator(velocity)
         self.b_player.Direction = diff.Yaw
     end
 end
@@ -58,19 +58,19 @@ end
 
 function class:MoveForward()
     if self.m_playerInput.ForwardAxisValue ~= 0 then
-        local direction = UE4.UKismetMathLibrary.GetForwardVector(self.rotation)
+        local direction = UE.UKismetMathLibrary.GetForwardVector(self.rotation)
         self.b_player:AddMovementInput(direction, self.m_playerInput.ForwardAxisValue)
     end
 end
 
 function class:MoveRight()
     if self.m_playerInput.RightAxisValue ~= 0 then
-        local direction = UE4.UKismetMathLibrary.GetRightVector(self.rotation)
+        local direction = UE.UKismetMathLibrary.GetRightVector(self.rotation)
         self.b_player:AddMovementInput(direction, self.m_playerInput.RightAxisValue)
     end
 end
 function class:beginPlay()
-    self.rotation = UE4.FRotator(0 , 0, 0)
+    self.rotation = UE.FRotator(0 , 0, 0)
     self.m_playerInput.JumpAction:AddStartListener(self, "Start_JumpAction")
     self.m_playerInput.JumpAction:AddStartListener(self, "Stop_CrouchAction")
     self.m_playerInput.JumpAction:AddStopListener(self, "Stop_JumpAction")
@@ -105,6 +105,6 @@ end
 
 function class:doWhileGround()
     local value = self.b_player.
-    UE4.UKismetMathLibrary.MapRangeClamped(45, 130, 1, 0.2)
+    UE.UKismetMathLibrary.MapRangeClamped(45, 130, 1, 0.2)
 end 
 return class

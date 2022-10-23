@@ -26,7 +26,7 @@ function class:registerLuaManager(key , luaclass)
     table.insert(self._registerManager , manager)
 end
 function class:registerUManager(key , luaclass)  
-    local manager =  self:spawnLuaActor(luaclass, UE4.FVector(0.0, 0.0, 0.0) , UE4.FRotator(0, 0, 0))
+    local manager =  self:spawnLuaActor(luaclass, UE.FVector(0.0, 0.0, 0.0) , UE.FRotator(0, 0, 0))
     manager:init()
     self[key] = manager
     table.insert(self._registerManager , manager)
@@ -62,10 +62,11 @@ function class:setGameWorld(GameWorld)
     self.GameWorld = GameWorld
 end
 function class:beginPlay()
-    --local zero = UE4.FVector(0.0, 0.0, 0.0)
+    local window = gWorld.UIManager:openUIWindowWithName("Login")
+    --local zero = UE.FVector(0.0, 0.0, 0.0)
     --self.inputManage = GA.Manage.InputManage.new()
 
-    -- local playerControl = UE4.UGameplayStatics.GetPlayerController(self.world, 0)
+    -- local playerControl = UE.UGameplayStatics.GetPlayerController(self.world, 0)
     -- self.playerNet = GA.Player.PlayerNet.new(playerControl)
     -- self.message_beginPlay:send()
 end
@@ -86,13 +87,13 @@ function class:lateTick(dt)
 end
 
 function class:spawnActor(uclass, uLocation , uRotation , params)
-    local transform = UE4.FTransform(uRotation:ToQuat(), uLocation)
+    local transform = UE.FTransform(uRotation:ToQuat(), uLocation)
     return self._uWorldContext:SpawnActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn)
 end
 
 function class:spawnLuaActor(luaclass, uLocation , uRotation , params)
     local uclass,modulename = luaclass:GetUnluaBind()
-    local transform = UE4.FTransform(uRotation:ToQuat(), uLocation)
+    local transform = UE.FTransform(uRotation:ToQuat(), uLocation)
     return self._uWorldContext:SpawnLuaActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn , self , self, modulename)
 end
 

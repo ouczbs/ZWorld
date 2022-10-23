@@ -4,20 +4,24 @@ function class:ctor(layer)
 	self.m_UIBaseArray	   = {}
 	self.layer = layer
 end
-local function _findUIWindow(windowArray , uiClass)
+local function _findUIWindow(windowArray , uiData)
 	for index ,window in ipairs(windowArray) do 
-		if window.__cname == uiClass.__cname then 
+		if window.__uid == uiData.id then 
 			return window , index
 		end
 	end
 end
-function class:openUIWindowWithClass(uiClass, inIsKeepOther)
-	local tWindow , tIndex = _findUIWindow(self.m_UIBaseArray , uiClass )
+function class:openUIWindowWithClass(uiData, inIsKeepOther)
+	local tWindow , tIndex = _findUIWindow(self.m_UIBaseArray , uiData)
 	if tWindow == nil then
-		tWindow = UE4.UWidgetBlueprintLibrary.Create(gWorld:getWorldContext() , uiClass.s_bpWindow)
+		local layout = import(uiData.layout)
+		tWindow = UE.UWidgetBlueprintLibrary.Create(gWorld:getWorldContext() , layout)
 		tWindow:AddToViewport(self.layer)
-		logE(self.layer , "layer")
-		tWindow:init()
+		if not tWindow.Object then 
+			local uobject = tWindow
+			tWindow = GA.UI.UIWindowBP.new(uobject)
+		end
+		tWindow:init(uiData)
 	end
 	return self:openUIInternal(tWindow, inIsKeepOther, tIndex)
 end
@@ -28,7 +32,9 @@ function class:openUIInternal(inWindow, inIsKeepOther, inInternalIndex)
 		self:showWindow(inWindow)
 		return inWindow
 	end
-	table.remove(self.m_UIBaseArray, inInternalIndex)
+	if inInternalIndex then
+		table.remove(self.m_UIBaseArray, inInternalIndex)
+	end
 	local tCurrentUICount = #self.m_UIBaseArray
 	if inWindow.s_bClearSelfStack then
 		self:clearUIWindows()
@@ -46,10 +52,13 @@ end
 
 function class:clearUIWindows()
 	for _,window in ipairs(self.m_UIBaseArray) do 
-		window:destroy()
+		window:destroy(bUIManager)
 	end 
 	self.m_UIBaseArray = {}
 end
 function class:hideUIWindow(window)
+	window:hide()
+end
+function class:closeUIWindow(uiData)
 	window:hide()
 end

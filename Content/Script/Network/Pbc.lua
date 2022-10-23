@@ -2,25 +2,29 @@
 require "Network.ProtoDown"
 require "Network.ProtoUp"
 local ProtoId = require "Network.EProtoId"
-local _pb     = require "pb"
-local reversedProtoId = {}
-local pb_path = "E:\\ouczbs\\Survive\\Content" .. "\\Script\\Network\\pb\\"
 
 local class = class(GA.Network, "Pbc")
-local ProtoPb = {}
-local ProtoMap = {}
 local Promise = GA.Utility.Promise
+
+local _pb     = require "pb"
+local _pb_path = gRootPath .. "\\Script\\Network\\pb\\"
+local _proto_pb = {}
+local _pb_proto = {}
+local _proto_map = {}
 local _wrapType = "pb.WrapMessage" 
 function class:ctor()
     self.reg()
     self.down = GA.Network.ProtoDown.new()
     self.up = GA.Network.ProtoUp.new()
     for k,v in pairs(ProtoId) do 
-        reversedProtoId[v] = k
+        _pb_proto[v] = k
     end
 end
 local function _regFile(file)
-    _pb.loadfile(pb_path.. file)
+    local ret = _pb.loadfile(_pb_path.. file)
+    if not ret then 
+        logE(file .. " load failed :_regFile")
+    end
 end
 
 function class.reg()
@@ -33,7 +37,7 @@ function class.reg()
 	-- pbc reg auto-gen
 end
 function class.RegisterHandle(sequence , handle)
-    ProtoMap[sequence] = handle
+    _proto_map[sequence] = handle
 end
 function class.Send(...)
     proto_send(...)
@@ -47,8 +51,8 @@ function class.rcvWrapper(data , type , id)
     gRequest.next = true
     local globalHandle = pbc.down[cmd]
     local response = wrap.response
-    local handle = ProtoMap[response]
-    ProtoMap[response] = nil
+    local handle = _proto_map[response]
+    _proto_map[response] = nil
     Promise.Then(handle , gRequest , msg).Then(globalHandle , gRequest , msg)
 end 
 function class.rcv(data , type , id)
@@ -63,16 +67,16 @@ function class.Cmd2Id(cmd)
 end
 
 function class.Cmd2Pb(cmd)
-    local pb = ProtoPb[cmd]
+    local pb = _proto_pb[cmd]
     if not pb and cmd then 
          pb = "pb." .. cmd
-         ProtoPb[cmd] = pb
+         _proto_pb[cmd] = pb
     end 
     return pb
 end
 
 function class.Id2Cmd(id)
-    return reversedProtoId[id]
+    return _pb_proto[id]
 end 
 
 function class.Encode(msg , pb)
@@ -81,9 +85,16 @@ end
 function class.EncodeWrap(wrap)
     return _pb.encode(_wrapType , wrap)
 end 
-
-function class.EncodeConfig(msg , pbname)
-    local config = pbc.Encode(msg , "pb." .. pbname)
-    local wf = io.open(pbname..".ini" , "w+")
-    wf.write(config)
+local config_path = gRootPath .. "\\Table\\%s.ini"
+function class.EncodeConfig(msg , pbname , path)
+    if not msg then return end
+    path = path or string.format(config_path , pbname )
+    local config = _pb.encode("pb." .. pbname , msg)
+    if not config or config == "" then 
+        logE("EncodeConfig failed: " .. pbname , msg)
+        return
+    end
+    local wf = io.open(path, "w+")
+    wf:write(config)
+    wf:close()
 end

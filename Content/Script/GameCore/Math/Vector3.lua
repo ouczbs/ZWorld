@@ -6,7 +6,7 @@ function class:ctor(X ,Y , Z)
     self.X = X or 0.0
     self.Y = Y or 0.0
     self.Z = Z or 0.0
-    self.vector = UE4.FVector(self.X, self.Y, self.Z)
+    self.vector = UE.FVector(self.X, self.Y, self.Z)
 end
 
 function class:set(X , Y , Z)

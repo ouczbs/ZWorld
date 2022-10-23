@@ -1,8 +1,12 @@
 
-…
-DataConfig.protopb"]
-	GuiConfig
-id (Rid
-name (	Rname
+…
+DataConfig.protopb"Ü
+	GuiConfig5
+item_map (2.pb.GuiConfig.ItemMapEntryRitemMapF
+UIItem
+id (Rid
 layout (	Rlayout
-layar (RlayarBZ.;pbbproto3
+layer (RlayerP
+ItemMapEntry
+key (	Rkey*
+value (2.pb.GuiConfig.UIItemRvalue:8BZ.;pbbproto3

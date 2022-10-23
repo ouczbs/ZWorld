@@ -3,8 +3,10 @@ package pb;
 option go_package = ".;pb";
 
 message GuiConfig{
-    int32 id = 1;
-    string name = 2;
-    string layout = 3;
-    int32 layar = 4;
+    message UIItem{
+        int32 id = 1;
+        string layout = 3;
+        int32 layer = 4;
+    }
+    map<string, UIItem> item_map = 1;
 }

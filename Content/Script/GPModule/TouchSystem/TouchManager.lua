@@ -6,8 +6,8 @@ function class:ctor()
 
 end
 function class:init()
-    --local widget = gWorld.UIManager:openUIWindowWithClassName("TouchWindow")
-    -- local controller = UE4.UGameplayStatics:GetPlayerController(0) 
+    --local widget = gWorld.UIManager:openUIWindowWithName("TouchWindow")
+    -- local controller = UE.UGameplayStatics:GetPlayerController(0) 
     -- controller:bShowMouseCursor(true)
 end
 

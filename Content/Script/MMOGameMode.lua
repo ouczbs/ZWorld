@@ -5,6 +5,8 @@ local class = UnLua.Class()
 function class:OverrideInitGame()
     require "World"
     CreateGlobalVar()
+    
+    pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
     --创建各种message
     local WorldContext = self:GetWorld()
     gWorld:InitializeWorld(WorldContext)

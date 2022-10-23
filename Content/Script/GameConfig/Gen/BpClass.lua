@@ -1,36 +1,37 @@
-local BpType = GA.Config.BpType or {}
+local BpType = GA.BpType or {}
 local BpClassMap = {
 	-- bpmap reg auto-gen
-	-- ../../../../../ouczbs/Survive/Content/\Blueprints start
+	-- ../../../../../ouczbs/ZWorld/Content/\Blueprints start
+	BP_BasePlayAnim = BpType.BP_BasePlayAnim ,
+	BP_OverLayAnim = BpType.BP_OverLayAnim ,
+	BP_PlayAnim = BpType.BP_PlayAnim ,
+	BP_PlayCharacter = BpType.BP_PlayCharacter ,
+	BP_PlayCharacterBase = BpType.BP_PlayCharacterBase ,
+	BP_PlayerController = BpType.BP_PlayerController ,
+	BP_PlayerState = BpType.BP_PlayerState ,
+	BP_GameOwner = BpType.BP_GameOwner ,
 	BP_LuaManager = BpType.BP_LuaManager ,
 	BP_MessageManager = BpType.BP_MessageManager ,
-	UI_AndriodWindow = BpType.UI_AndriodWindow ,
-	-- ../../../../../ouczbs/Survive/Content/\Blueprints end
+	UI_EditorAnimRetarget = BpType.UI_EditorAnimRetarget ,
+	UI_FoldPanel = BpType.UI_FoldPanel ,
+	UI_SourceComboBox = BpType.UI_SourceComboBox ,
+	-- ../../../../../ouczbs/ZWorld/Content/\Blueprints end
 
-	-- ../../../../../ouczbs/Survive/Content/\AdvancedLocomotionV4\Blueprints start
-	ALS_AnimMan_CharacterBP = BpType.ALS_AnimMan_CharacterBP ,
-	ALS_Base_CharacterBP = BpType.ALS_Base_CharacterBP ,
-	-- ../../../../../ouczbs/Survive/Content/\AdvancedLocomotionV4\Blueprints end
+	-- ../../../../../ouczbs/ZWorld/Content/\UI start
+	UI_LoginWin = BpType.UI_LoginWin ,
+	UI_MainWin = BpType.UI_MainWin ,
+	UI_FunBtnEntry = BpType.UI_FunBtnEntry ,
+	-- ../../../../../ouczbs/ZWorld/Content/\UI end
 
-	-- ../../../../../ouczbs/Survive/Content/\PlayerBuildingSystem\Blueprints start
-	BP_BuildingAbility = BpType.BP_BuildingAbility ,
-	BP_CeilingGrid = BpType.BP_CeilingGrid ,
-	BP_DoorGrid = BpType.BP_DoorGrid ,
-	BP_FoundationGrid = BpType.BP_FoundationGrid ,
-	BP_MasterGrid = BpType.BP_MasterGrid ,
-	BP_PillerGrid = BpType.BP_PillerGrid ,
-	BP_StairsGrid = BpType.BP_StairsGrid ,
-	BP_WallGrid = BpType.BP_WallGrid ,
-	BP_WindowGrid = BpType.BP_WindowGrid ,
-	BP_DoorFrame_01 = BpType.BP_DoorFrame_01 ,
-	BP_MasterBuildPart = BpType.BP_MasterBuildPart ,
-	BP_WindowFrame_01 = BpType.BP_WindowFrame_01 ,
-	BP_BuildMaster = BpType.BP_BuildMaster ,
-	-- ../../../../../ouczbs/Survive/Content/\PlayerBuildingSystem\Blueprints end
+	-- ../../../../../ouczbs/ZWorld/Content/\Resource\Blueprints start
+	BP_LightStudio = BpType.BP_LightStudio ,
+	-- ../../../../../ouczbs/ZWorld/Content/\Resource\Blueprints end
 
-	-- ../../../../../ouczbs/Survive/Content/\TouchSystem\Blueprints start
+	-- ../../../../../ouczbs/ZWorld/Content/\TouchSystem\Blueprints start
+	UI_Camera = BpType.UI_Camera ,
+	UI_Joystick = BpType.UI_Joystick ,
 	UI_TouchWindow = BpType.UI_TouchWindow ,
-	-- ../../../../../ouczbs/Survive/Content/\TouchSystem\Blueprints end
+	-- ../../../../../ouczbs/ZWorld/Content/\TouchSystem\Blueprints end
 
 	-- bpmap reg auto-gen
 
