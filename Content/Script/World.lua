@@ -55,14 +55,14 @@ end
 function class:getWorldContext()
     return self._uWorldContext
 end
-function class:setWorld(world)
-    self.world = world
+function class:getMainController()
+    return UE.UGameplayStatics.GetPlayerController(self._uWorldContext, 0)
 end
-function class:setGameWorld(GameWorld)
-    self.GameWorld = GameWorld
+function class:getMainPlayer()
+    return UE.UGameplayStatics.GetPlayerPawn(self._uWorldContext, 0)
 end
 function class:beginPlay()
-    local window = gWorld.UIManager:openUIWindowWithName("Login")
+    gWorld.UIManager:openUIWindowWithName("Login")
     --local zero = UE.FVector(0.0, 0.0, 0.0)
     --self.inputManage = GA.Manage.InputManage.new()
 

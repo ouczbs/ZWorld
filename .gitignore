@@ -5,9 +5,9 @@ Intermediate
 Content\AdvancedLocomotionV4
 Content\AdvancedVillagePack
 Content\Ultimate_Traversal_Anims
+Content\Table\*.ini
 Plugins\**\Binaries
 Plugins\**\Intermediate
-Content\Genshin\
 Saved
 *.sln
 *.uproject

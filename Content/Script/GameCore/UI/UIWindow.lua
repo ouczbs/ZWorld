@@ -12,9 +12,9 @@ function class:init(data)
     end
 end
 
-function class:destroy(bClear)
+function class:destroy()
     self:RemoveFromParent()
-    logE(self.__cname .. " Destroy")
+    self:Release()
     if self.onDestroy then 
         self:onDestroy()
     end

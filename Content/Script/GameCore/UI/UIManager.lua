@@ -36,8 +36,9 @@ function class:openUIWindowWithId(id, bKeepOther)
 	local retUI = self.m_UiStack[layer]:openUIWindowWithClass(uiData, bKeepOther or false)
     return retUI
 end
-function class:closeUIWindow(window)
-    local uiData = _UiList[window.__cname]
+function class:closeUIWindow(name)
+    local uiData = _UiList[name]
+    if not uiData then return end
     local layer = uiData.layer
     self.m_UiStack[layer]:closeUIWindow(uiData)
 end

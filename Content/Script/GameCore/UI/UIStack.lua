@@ -15,7 +15,7 @@ function class:openUIWindowWithClass(uiData, inIsKeepOther)
 	local tWindow , tIndex = _findUIWindow(self.m_UIBaseArray , uiData)
 	if tWindow == nil then
 		local layout = import(uiData.layout)
-		tWindow = UE.UWidgetBlueprintLibrary.Create(gWorld:getWorldContext() , layout)
+		tWindow = NewObject(layout, gWorld:getWorldContext(), nil, uiData.script)
 		tWindow:AddToViewport(self.layer)
 		if not tWindow.Object then 
 			local uobject = tWindow
@@ -60,5 +60,9 @@ function class:hideUIWindow(window)
 	window:hide()
 end
 function class:closeUIWindow(uiData)
-	window:hide()
+	local tWindow , tIndex = _findUIWindow(self.m_UIBaseArray , uiData)
+	if tWindow then
+		tWindow:destroy()
+		table.remove(self.m_UIBaseArray, tIndex)
+	end
 end
