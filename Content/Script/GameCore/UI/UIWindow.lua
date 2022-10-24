@@ -18,9 +18,6 @@ function class:destroy(bClear)
     if self.onDestroy then 
         self:onDestroy()
     end
-    if not bClear then 
-        gWorld.UIManager:RemoveFromParent
-    end
 end
 
 function class:show()

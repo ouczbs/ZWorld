@@ -7,12 +7,9 @@ Content\AdvancedVillagePack
 Content\Ultimate_Traversal_Anims
 Plugins\**\Binaries
 Plugins\**\Intermediate
-Survive.sln
+Content\Genshin\
 Saved
-Content/Genshin/
 *.sln
 *.uproject
-Saved
-Script
 *.log
 *.pyc
