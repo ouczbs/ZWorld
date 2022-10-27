@@ -96,7 +96,19 @@ def GenAndRegPBC(rootDir):
         outAutoGen = pbcContent[:fIdx] + "\n".join(pbOutList) + pbcContent[lIdx + len(searchStr):]
         with open(registerLuaFile, 'wb') as f:
             f.write(outAutoGen.encode())
-            
+
+def AutoGenPbc_CPlusPlus(rootDir):
+    os.chdir(rootDir + "/Proto")
+    os.chdir('../..')
+    out_path = os.getcwd() + "/Plugins/GameFrame/Source/GameFrame/Public/Proto"
+    os.chdir(rootDir + "/Proto")
+    cmd = "protoc -I=. --cpp_out={0}/. DataConfig.proto".format(out_path)
+    popen = os.popen(cmd)
+    lines = popen.readlines()
+    UPrint(cmd)
+    if lines:
+        UPrint("".join(lines))
+    pass
 def AutoGenPbc(rootDir):
     inFile = rootDir + "/Proto/Cmd.proto"
     outFile = rootDir +  "/Script/Network/EProtoMap.lua"
@@ -112,4 +124,7 @@ def AutoGenPbc(rootDir):
     AutoGenPbc_Id(cmdList , outFile2) # gen protoId.
     UPrint("AutoGenPbc_Enum")
     AutoGenPbc_Enum(protoDir ,protoOutLuaFile )# gen all msgEnum
+    UPrint("AutoGenPbc")
     GenAndRegPBC(rootDir)
+    UPrint("AutoGenPbc_CPlusPlus")
+    AutoGenPbc_CPlusPlus(rootDir)

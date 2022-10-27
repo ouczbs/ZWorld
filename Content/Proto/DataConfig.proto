@@ -10,3 +10,7 @@ message GuiConfig{
     }
     map<string, UIItem> item_map = 1;
 }
+
+message BPConfig{
+    map<string, string> item_map = 1;
+}

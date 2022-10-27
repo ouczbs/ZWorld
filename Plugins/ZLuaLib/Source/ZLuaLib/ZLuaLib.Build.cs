@@ -41,6 +41,7 @@ public class ZLuaLib : ModuleRules
 				// ... add private dependencies that you statically link with here ...	
 				"Lua",
 				"LuaProtobuf",
+				"Protobuf",
 				"UnLua",
 			}
 			);

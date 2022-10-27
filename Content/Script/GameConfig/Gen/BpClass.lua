@@ -1,7 +1,7 @@
 local BpType = GA.BpType or {}
 local BpClassMap = {
 	-- bpmap reg auto-gen
-	-- ../../../../../ouczbs/ZWorld/Content/\Blueprints start
+	-- F:/ZWorld/Content/\Blueprints start
 	BP_BasePlayAnim = BpType.BP_BasePlayAnim ,
 	BP_OverLayAnim = BpType.BP_OverLayAnim ,
 	BP_PlayAnim = BpType.BP_PlayAnim ,
@@ -15,23 +15,23 @@ local BpClassMap = {
 	UI_EditorAnimRetarget = BpType.UI_EditorAnimRetarget ,
 	UI_FoldPanel = BpType.UI_FoldPanel ,
 	UI_SourceComboBox = BpType.UI_SourceComboBox ,
-	-- ../../../../../ouczbs/ZWorld/Content/\Blueprints end
+	-- F:/ZWorld/Content/\Blueprints end
 
-	-- ../../../../../ouczbs/ZWorld/Content/\UI start
+	-- F:/ZWorld/Content/\UI start
 	UI_LoginWin = BpType.UI_LoginWin ,
 	UI_MainWin = BpType.UI_MainWin ,
 	UI_FunBtnEntry = BpType.UI_FunBtnEntry ,
-	-- ../../../../../ouczbs/ZWorld/Content/\UI end
+	-- F:/ZWorld/Content/\UI end
 
-	-- ../../../../../ouczbs/ZWorld/Content/\Resource\Blueprints start
+	-- F:/ZWorld/Content/\Resource\Blueprints start
 	BP_LightStudio = BpType.BP_LightStudio ,
-	-- ../../../../../ouczbs/ZWorld/Content/\Resource\Blueprints end
+	-- F:/ZWorld/Content/\Resource\Blueprints end
 
-	-- ../../../../../ouczbs/ZWorld/Content/\TouchSystem\Blueprints start
+	-- F:/ZWorld/Content/\TouchSystem\Blueprints start
 	UI_Camera = BpType.UI_Camera ,
 	UI_Joystick = BpType.UI_Joystick ,
 	UI_TouchWindow = BpType.UI_TouchWindow ,
-	-- ../../../../../ouczbs/ZWorld/Content/\TouchSystem\Blueprints end
+	-- F:/ZWorld/Content/\TouchSystem\Blueprints end
 
 	-- bpmap reg auto-gen
 

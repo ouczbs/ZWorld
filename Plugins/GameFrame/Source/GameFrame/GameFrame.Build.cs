@@ -8,8 +8,7 @@ public class GameFrame : ModuleRules
 	public GameFrame(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-		
-		PublicIncludePaths.AddRange(
+        PublicIncludePaths.AddRange(
 			new string[] {
 				Path.Combine(ModuleDirectory, "Public"),
 				// ... add public include paths required here ...
@@ -43,6 +42,7 @@ public class GameFrame : ModuleRules
 				"SlateCore",
 				"DeveloperSettings",
 				"UnrealEd",
+				"Protobuf"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

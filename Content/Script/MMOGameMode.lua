@@ -7,6 +7,7 @@ function class:OverrideInitGame()
     CreateGlobalVar()
     
     pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
+    pbc.EncodeConfig(GA.Config.BP , "BPConfig")
     --创建各种message
     local WorldContext = self:GetWorld()
     gWorld:InitializeWorld(WorldContext)
