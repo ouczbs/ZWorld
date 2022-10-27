@@ -29,10 +29,11 @@ public:
 	void OnInitialize();
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnDeinitialize();
+
 	UFUNCTION(BlueprintCallable, Category = "GameTable")
 	static bool GetDataTableRow(UDataTable* Table, FName RowName, FStructTableBase& OutRow);
 	UFUNCTION(BlueprintCallable, Category = "GameTable")
-		static void SetSuperStruct(UDataTable* Table)
+	static void SetSuperStruct(UDataTable* Table)
 	{
 		if (Table && Table->RowStruct) {
 			auto RowStruct = Table->RowStruct;
