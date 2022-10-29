@@ -1,5 +1,5 @@
 
-É
+ç
 DataConfig.protopb"‹
 	GuiConfig5
 item_map (2.pb.GuiConfig.ItemMapEntryRitemMapF
@@ -9,9 +9,19 @@
 layer (RlayerP
 ItemMapEntry
 key (	Rkey*
-value (2.pb.GuiConfig.UIItemRvalue:8"|
-BPConfig4
-item_map (2.pb.BPConfig.ItemMapEntryRitemMap:
-ItemMapEntry
-key (	Rkey
-value (	Rvalue:8BZ.;pbbproto3
+value (2.pb.GuiConfig.UIItemRvalue:8"z
+BPConfig0
+	item_list (2.pb.BPConfig.BPItemRitemList<
+BPItem
+bp_name (	RbpName
+lua_name (	RluaName"<
+Result
+bp_name (	RbpName
+lua_name (	RluaName"P
+
+TestConfig
+a (Ra
+b (	Rb
+c (	Rc
+d (2
+.pb.ResultRdBHbproto3

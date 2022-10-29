@@ -85,7 +85,7 @@ end
 function class.EncodeWrap(wrap)
     return _pb.encode(_wrapType , wrap)
 end 
-local config_path = gRootPath .. "\\Table\\%s.ini"
+local config_path = gRootPath .. "Table/%s.ini"
 function class.EncodeConfig(msg , pbname , path)
     if not msg then return end
     path = path or string.format(config_path , pbname )
@@ -97,4 +97,13 @@ function class.EncodeConfig(msg , pbname , path)
     local wf = io.open(path, "w+")
     wf:write(config)
     wf:close()
+end
+
+function class.DecodeConfig(pbname , path)
+    path = path or string.format(config_path , pbname )
+    local rf = io.open(path, "r")
+    local data = rf:read("*a")
+    rf:close()
+    local msg = _pb.decode("pb." .. pbname , data)
+    return msg
 end

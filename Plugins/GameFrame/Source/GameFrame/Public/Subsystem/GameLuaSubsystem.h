@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 //#include "Proto/DataConfig.pb.h"
-#include "../Proto/DataConfig.pb.h"
+#include "Proto/DataConfig.pb.h"
 #include "LuaModuleLocator.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameLuaSubsystem.generated.h"
@@ -12,7 +12,6 @@
 /**
  * 
  */
-using namespace pb;
 UCLASS()
 class GAMEFRAME_API UGameLuaSubsystem : public UGameInstanceSubsystem
 {
@@ -22,13 +21,17 @@ public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection)override;
 	virtual void Deinitialize()override;
 
+	UFUNCTION(BlueprintCallable, Category = "LuaSystem")
+	bool ReloadConfig();
+	bool ReloadTestConfig();
+	UFUNCTION(BlueprintCallable, Category = "LuaSystem")
 	FString FindLuaModule(FString& Name);
 
 	static UGameLuaSubsystem* GetSystem() {
 		return LuaSystem;
 	}
 private:
-	BPConfig mConfig;
+	pb::BPConfig mConfig;
 	static UGameLuaSubsystem* LuaSystem;
 };
 

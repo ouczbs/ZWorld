@@ -1,6 +1,6 @@
 syntax = "proto3";
 package pb;
-option go_package = ".;pb";
+option optimize_for = SPEED;
 
 message GuiConfig{
     message UIItem{
@@ -12,5 +12,19 @@ message GuiConfig{
 }
 
 message BPConfig{
-    map<string, string> item_map = 1;
+    message BPItem{
+        string bp_name = 1;
+        string lua_name = 2;
+    }
+    repeated BPItem item_list = 1;
+}
+message Result{
+    string bp_name = 1;
+    string lua_name = 2;
+}
+message TestConfig{
+    int32 a = 1;
+    repeated string b = 2;
+    string c = 3;
+    repeated Result d = 4;
 }
