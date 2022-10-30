@@ -13,7 +13,6 @@ void UGameLuaSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	//写入
 	ReloadConfig();
-	ReloadTestConfig();
 	LuaSystem = this;
 }
 
@@ -30,64 +29,25 @@ bool UGameLuaSubsystem::ReloadConfig()
 		UE_LOG(LogTemp, Error, TEXT("Table/BPConfig.ini is not Exists!!!"));
 		return false;
 	}
-	pb::BPConfig config2;
-	FString resultString;
-	FFileHelper::LoadFileToString(resultString, *LoadDir);
-
+	pb::BPConfig BPConfig;
 	std::fstream in(*LoadDir, std::ios::in | std::ios::binary);
-	if (!config2.ParseFromIstream(&in))
+	if (!BPConfig.ParseFromIstream(&in))
 	{
-		mConfig.ParseFromString(TCHAR_TO_UTF8(*resultString));
-		UE_LOG(LogTemp, Error, TEXT("Parse error!!!"));
+		UE_LOG(LogTemp, Error, TEXT("Table/BPConfig.ini ParseFromIstream error!!!"));
 		return false;
 	}
-	return true;
-}
-bool UGameLuaSubsystem::ReloadTestConfig()
-{
-	FString LoadDir = FPaths::ProjectContentDir() / TEXT("Table/TestConfig.ini");  //文件路径
-	if (!FFileManagerGeneric::Get().FileExists(*LoadDir)) //判断是否存在文件
-	{
-		UE_LOG(LogTemp, Error, TEXT("Table/BPConfig.ini is not Exists!!!"));
-		return false;
+	auto list = BPConfig.item_list();
+	for (auto iter = list.begin(); iter != list.end();) {
+		LuaBPMap.Add(FName(iter->bp_name().c_str()), iter->lua_name().c_str());
 	}
-	pb::TestConfig test;
-	FString resultString;
-	FFileHelper::LoadFileToString(resultString, *LoadDir);
-
-	std::fstream in(*LoadDir, std::ios::in | std::ios::binary);
-	if (!test.ParseFromIstream(&in))
-	{
-		UE_LOG(LogTemp, Error, TEXT("Parse error!!!"));
-	}
-	auto b = test.b();
-	auto c = test.c();
-	auto d = test.d();
-	int size = d.size();
-	if (size > 0) {
-		auto e = d.Get(0);
-	}
-	
-	auto a = test.a();
-	if (!test.ParseFromString(TCHAR_TO_UTF8(*resultString))) {
-		UE_LOG(LogTemp, Error, TEXT("Parse error!!! ParseFromString"));
-	}
-	//UE_LOG(LogTemp, Error, c);
-	// Write the new address book back to disk.
-	std::fstream output(*LoadDir, std::ios::out | std::ios::trunc | std::ios::binary);
-	test.SerializeToOstream(&output);
-	UE_LOG(LogTemp, Error, TEXT("Parse success!!!"));
+	//LuaBPMap;
 	return true;
 }
 FString UGameLuaSubsystem::FindLuaModule(FString& Name)
 {
-	auto& map = mConfig.item_list();
-	/*
-	auto iterator = map.find(TCHAR_TO_UTF8(*Name));
-	if (iterator != map.end()) {
-		return (*iterator).second.c_str();
-	}
-	*/
+	const auto module = LuaBPMap.Find(FName(Name));
+	if (module)
+		return *module;
 	return "";
 }
 
@@ -97,7 +57,7 @@ FString ULuaModuleLocator_ByConfig::Locate(const UObject* Object)
 	FString Key = Class->GetName();
 	Key.RemoveFromEnd(TEXT("_C"));
 	UGameLuaSubsystem* LuaSystem = UGameLuaSubsystem::GetSystem();
-	if (LuaSystem ) {
+	if (LuaSystem) {
 		FString Result = LuaSystem->FindLuaModule(Key);
 		if (!Result.IsEmpty()) {
 			return Result;

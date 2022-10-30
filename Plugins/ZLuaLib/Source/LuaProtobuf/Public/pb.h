@@ -80,11 +80,11 @@ typedef signed   long long  int64_t;
 #include <lauxlib.h>
 PB_NS_BEGIN
 
-LUALIB_API int luaopen_pb(struct lua_State *L);
-LUALIB_API int luaopen_pb_slice(struct lua_State *L);
-LUALIB_API int luaopen_pb_buffer(struct lua_State *L);
-LUALIB_API int luaopen_pb_conv(struct lua_State *L);
-LUALIB_API int luaopen_pb_io(struct lua_State *L);
+LUALIB_API int luaopen_pb(struct lua_State* L);
+LUALIB_API int luaopen_pb_slice(struct lua_State* L);
+LUALIB_API int luaopen_pb_buffer(struct lua_State* L);
+LUALIB_API int luaopen_pb_conv(struct lua_State* L);
+LUALIB_API int luaopen_pb_io(struct lua_State* L);
 
 /* types */
 

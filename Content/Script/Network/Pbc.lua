@@ -7,7 +7,7 @@ local class = class(GA.Network, "Pbc")
 local Promise = GA.Utility.Promise
 
 local _pb     = require "pb"
-local _pb_path = gRootPath .. "\\Script\\Network\\pb\\"
+local _pb_path = gRootPath .. "\\Proto\\pb\\"
 local _proto_pb = {}
 local _pb_proto = {}
 local _proto_map = {}
@@ -94,14 +94,14 @@ function class.EncodeConfig(msg , pbname , path)
         logE("EncodeConfig failed: " .. pbname , msg)
         return
     end
-    local wf = io.open(path, "w+")
+    local wf = io.open(path, "wb")
     wf:write(config)
     wf:close()
 end
 
 function class.DecodeConfig(pbname , path)
     path = path or string.format(config_path , pbname )
-    local rf = io.open(path, "r")
+    local rf = io.open(path, "rb")
     local data = rf:read("*a")
     rf:close()
     local msg = _pb.decode("pb." .. pbname , data)

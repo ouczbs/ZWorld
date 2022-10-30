@@ -1,4 +1,4 @@
-import os,re,glob
+import os,re,glob,shutil
 from utils import *
 def AutoGenPbc_Map(cmdList , outFile):
     msgPrefix = "CMD_"
@@ -67,26 +67,26 @@ def AutoGenPbc_Enum(protoDir ,outFile ):
 def GenAndRegPBC(rootDir):
     # gen pb file.
     os.chdir(rootDir + "/Proto")
-    exeDir = rootDir + "/Proto/"
-    outPBCDir = rootDir +"/Script/Network/Pb/"
-    cmd = "pb2pbc.bat {0} {1}".format(exeDir , outPBCDir)
+    pbDir = rootDir + "/Proto/pb"
+    registerLuaFile = rootDir +"/Script/Network/pbc.lua"
+    cmd = "pb2pbc.bat"
     popen = os.popen(cmd)
     lines = popen.readlines()
     UPrint(cmd)
     if lines:
         UPrint("".join(lines))
     os.chdir(rootDir)
+
     # gen pb reg.
     pbcContent = ""
-    registerLuaFile = rootDir +"/Script/Network/pbc.lua"
     with open(registerLuaFile, 'rb') as f:
         pbcContent = f.read().decode()
     searchStr = "-- pbc reg auto-gen"
-    fIdx = pbcContent.find(searchStr )
+    fIdx = pbcContent.find(searchStr)
     lIdx = pbcContent.rfind(searchStr)
     outAutoGen = ""
     if fIdx != lIdx :
-        protoPBs = glob.glob(os.path.join(outPBCDir, '*.pb'))
+        protoPBs = glob.glob(os.path.join(pbDir, '*.pb'))
         pbOutList = []
         pbOutList.append(searchStr)
         for pb in protoPBs:
@@ -97,17 +97,20 @@ def GenAndRegPBC(rootDir):
         with open(registerLuaFile, 'wb') as f:
             f.write(outAutoGen.encode())
 
-def AutoGenPbc_CPlusPlus(rootDir):
+def AutoGenPbc_CPP(rootDir):
     os.chdir(rootDir + "/Proto")
     os.chdir('../..')
-    out_path = os.getcwd() + "/Plugins/GameFrame/Source/GameFrame/Public/Proto"
+    out_path = os.getcwd() + "/Plugins/GameFrame/Source/GameFrame/Public/Proto/"
+    cppDir = rootDir + "/Proto/cpp/"
     os.chdir(rootDir + "/Proto")
-    cmd = "protoc -I=. --cpp_out={0}/. DataConfig.proto".format(out_path)
+    cmd = "pb2cpp.bat"
     popen = os.popen(cmd)
     lines = popen.readlines()
     UPrint(cmd)
     if lines:
         UPrint("".join(lines))
+    for file_name in os.listdir(cppDir):
+        shutil.move(cppDir + file_name,out_path + file_name)
     pass
 def AutoGenPbc(rootDir):
     inFile = rootDir + "/Proto/Cmd.proto"
@@ -126,5 +129,5 @@ def AutoGenPbc(rootDir):
     AutoGenPbc_Enum(protoDir ,protoOutLuaFile )# gen all msgEnum
     UPrint("AutoGenPbc")
     GenAndRegPBC(rootDir)
-    UPrint("AutoGenPbc_CPlusPlus")
-    AutoGenPbc_CPlusPlus(rootDir)
+    UPrint("AutoGenPbc_CPP")
+    AutoGenPbc_CPP(rootDir)

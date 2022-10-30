@@ -23,7 +23,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "LuaSystem")
 	bool ReloadConfig();
-	bool ReloadTestConfig();
 	UFUNCTION(BlueprintCallable, Category = "LuaSystem")
 	FString FindLuaModule(FString& Name);
 
@@ -31,7 +30,7 @@ public:
 		return LuaSystem;
 	}
 private:
-	pb::BPConfig mConfig;
+	TMap<FName, FString> LuaBPMap;
 	static UGameLuaSubsystem* LuaSystem;
 };
 
@@ -41,7 +40,4 @@ class GAMEFRAME_API ULuaModuleLocator_ByConfig : public ULuaModuleLocator
 	GENERATED_BODY()
 public:
 	virtual FString Locate(const UObject* Object) override;
-
-private:
-	TMap<FName, FString> Cache;
 };

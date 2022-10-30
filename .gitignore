@@ -13,3 +13,7 @@ Saved
 *.uproject
 *.log
 *.pyc
+*.pb
+*.pb.cc
+*.pb.h
+/**/.ipynb_checkpoints

@@ -18,13 +18,3 @@ message BPConfig{
     }
     repeated BPItem item_list = 1;
 }
-message Result{
-    string bp_name = 1;
-    string lua_name = 2;
-}
-message TestConfig{
-    int32 a = 1;
-    repeated string b = 2;
-    string c = 3;
-    repeated Result d = 4;
-}

@@ -8,7 +8,6 @@ function class:OverrideInitGame()
     
     pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
     pbc.EncodeConfig(GA.Config.BP , "BPConfig")
-    pbc.EncodeConfig(GA.Config.Test , "TestConfig")
     --GA.Config.TestBP = pbc.DecodeConfig("BPConfig")
     --创建各种message
     local WorldContext = self:GetWorld()

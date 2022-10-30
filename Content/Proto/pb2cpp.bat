@@ -1,10 +1,11 @@
 @echo off
 setlocal EnableDelayedExpansion
 set /p=<nul>exec.bat
-set destPath=%2pb/
+set destPath=%2cpp/
+
 ECHO @echo on >>exec.bat
 for %%i in (*.proto) do (
-	set /p="protoc --descriptor_set_out=%destPath%%%~ni.pb %%i "<nul >> exec.bat
+	set /p="protoc --cpp_out=%destPath% %%i "<nul >> exec.bat
 
 	findstr /b /i import %%i >nul
 	if !errorlevel! equ 0  (set /p="--include_imports "<nul >> exec.bat)
