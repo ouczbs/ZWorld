@@ -22,7 +22,7 @@
 		},
 		{
 			"Name": "GameFrameK2",
-			"Type": "DeveloperTool",
+			"Type": "Editor",
 			"LoadingPhase": "Default"
 		},
 		{

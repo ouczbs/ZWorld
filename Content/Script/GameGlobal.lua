@@ -14,7 +14,7 @@ function GA:AddInitManager(name , UManager)
 	self.initManagerList[name] = UManager
 end
 serpent = require "Network.serpent"
-function CreateGlobalVar()
+function GA.CreateGlobalVar()
     gRequest = {}
     gRootPath = gRootPath or "../../../Content"
     gGameConst      = GA.Config.GameConst
@@ -22,5 +22,4 @@ function CreateGlobalVar()
     gRefers   =  GA.Config.Refers
     gWorld      = GA.World.new()
     pbc = GA.Network.Pbc.new()
-
 end

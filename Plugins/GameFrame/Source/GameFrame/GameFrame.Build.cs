@@ -41,8 +41,9 @@ public class GameFrame : ModuleRules
 				"Slate",
 				"SlateCore",
 				"DeveloperSettings",
-				"UnrealEd",
+				//"UnrealEd",
                 "UnLua",
+				"Lua",
                 "Protobuf",
 				// ... add private dependencies that you statically link with here ...	
 			}

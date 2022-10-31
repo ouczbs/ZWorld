@@ -17,8 +17,6 @@ class GAMEFRAME_API IPoolObjectInterface
     GENERATED_BODY()
 
 public:
-    UFUNCTION(BlueprintNativeEvent)
-    void OnSpawn();
-    UFUNCTION(BlueprintNativeEvent)
-    void OnUnspawn();
+   virtual void OnSpawn(){};
+   virtual void OnUnspawn(){};
 };

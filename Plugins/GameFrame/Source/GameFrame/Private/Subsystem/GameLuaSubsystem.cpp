@@ -37,7 +37,7 @@ bool UGameLuaSubsystem::ReloadConfig()
 		return false;
 	}
 	auto list = BPConfig.item_list();
-	for (auto iter = list.begin(); iter != list.end();) {
+	for (auto iter = list.begin(); iter != list.end(); iter++) {
 		LuaBPMap.Add(FName(iter->bp_name().c_str()), iter->lua_name().c_str());
 	}
 	//LuaBPMap;

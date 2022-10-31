@@ -4,7 +4,7 @@ local class = UnLua.Class()
 
 function class:OverrideInitGame()
     require "World"
-    CreateGlobalVar()
+    GA.CreateGlobalVar()
     
     pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
     pbc.EncodeConfig(GA.Config.BP , "BPConfig")

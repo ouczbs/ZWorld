@@ -15,14 +15,16 @@ UObject* USubObjectPool::Spawn() {
     else {
         Object = UGameplayStatics::SpawnObject(ObjectClass, this);
     }
-    TScriptInterface<IPoolObjectInterface> PoolInterface(Object);
-    PoolInterface->Execute_OnSpawn(Object);
+    IPoolObjectInterface* PoolInterface = Cast<IPoolObjectInterface>(Object);
+    if(PoolInterface)
+        PoolInterface->OnSpawn();
     return  Object;
 }
 
 void USubObjectPool::Unspawn(UObject* Object) {
-    TScriptInterface<IPoolObjectInterface> PoolInterface(Object);
-    PoolInterface->Execute_OnUnspawn(Object);
+    IPoolObjectInterface* PoolInterface = Cast<IPoolObjectInterface>(Object);
+    if (PoolInterface)
+        PoolInterface->OnUnspawn();
     ObjectsPool.Add(Object);
 }
 void UGamePoolSubsystem::Initialize(FSubsystemCollectionBase& Collection) {

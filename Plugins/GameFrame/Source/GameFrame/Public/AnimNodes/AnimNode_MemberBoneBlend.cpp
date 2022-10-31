@@ -218,7 +218,7 @@ void FAnimNode_MemberBoneBlend::Evaluate_AnyThread(FPoseContext& Output)
 		TArray<FBlendedCurve> TargetBlendCurves;
 		TargetBlendCurves.SetNum(NumPoses);
 
-		TArray<FStackCustomAttributes> TargetBlendAttributes;
+		TArray<UE::Anim::FStackAttributeContainer> TargetBlendAttributes;
 		TargetBlendAttributes.SetNum(NumPoses);
 
 		for (int32 ChildIndex = 0; ChildIndex < NumPoses; ++ChildIndex)

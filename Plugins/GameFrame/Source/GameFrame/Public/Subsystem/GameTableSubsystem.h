@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameTableSubsystem.generated.h"
 /**

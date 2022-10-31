@@ -31,7 +31,12 @@ function class:registerUManager(key , luaclass)
     self[key] = manager
     table.insert(self._registerManager , manager)
 end
+function class:CreateSubSystem()
+    self.UGamePoolSubsystem = UE.UGameOwnerLibrary.GetGameSubsystem(UE.UGamePoolSubsystem)
+    --self.UGamePoolSubsystem = UE.UGameOwnerLibrary.GetGameSubsystem(UE.UGamePoolSubsystem)
+end
 function class:InitializeWorld(WorldContext)
+    self:CreateSubSystem()
     self._uWorldContext = WorldContext
     --self:registerUManager("MessageManager" , GA.Manager.MessageManager)
 
