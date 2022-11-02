@@ -123,16 +123,20 @@ namespace UnLua
 
         virtual lua_Alloc GetLuaAllocator() const;
 
-        bool LoadString(const TArray<uint8>& Chunk, const FString& ChunkName = "chunk" ,const FString& FileName = "UnLua.lua")
+        bool LoadString(const TArray<uint8>& Chunk, const FString& ChunkName = "chunk" ,const FString& FileName = "UnLua")
         {
             const char* Bytes = (char*)Chunk.GetData();
-            return LoadBuffer(Bytes, Chunk.Num(), TCHAR_TO_UTF8(*ChunkName) , TCHAR_TO_UTF8(*FileName));
+            FString FullName = FileName + ".lua";
+            //FullName.RemoveFromEnd(TEXT(".lua"));
+            //FullName.Append(".lua");
+            return LoadBuffer(Bytes, Chunk.Num(), TCHAR_TO_UTF8(*ChunkName) , TCHAR_TO_UTF8(*FullName));
         }
 
-        bool LoadString(const FString& Chunk, const FString& ChunkName = "chunk", const FString& FileName = "UnLua.lua")
+        bool LoadString(const FString& Chunk, const FString& ChunkName = "chunk", const FString& FileName = "UnLua")
         {
             const FTCHARToUTF8 Bytes(*Chunk);
-            return LoadBuffer(Bytes.Get(), Bytes.Length(), TCHAR_TO_UTF8(*ChunkName), TCHAR_TO_UTF8(*FileName));
+            FString FullName = FileName + ".lua";
+            return LoadBuffer(Bytes.Get(), Bytes.Length(), TCHAR_TO_UTF8(*ChunkName), TCHAR_TO_UTF8(*FullName));
         }
 
     private:

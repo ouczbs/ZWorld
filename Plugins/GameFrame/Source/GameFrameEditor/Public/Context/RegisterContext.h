@@ -6,7 +6,7 @@ class IAssetTools;
 class IAssetTypeActions;
 
 
-class GAMEFRAME_API FRegisterContext
+class FRegisterContext
 {
 public:
 	void RegisterAssetTypeAction(IAssetTools& AssetTools, TSharedRef<IAssetTypeActions> Action);

@@ -366,7 +366,7 @@ namespace UnLua
 #endif
 
         // loads the buffer as a Lua chunk
-        const int32 Code = luaL_loadbufferx(L, Buffer, Size, InName, nullptr);
+        const int32 Code = luaL_loadbufferx(L, Buffer, Size, fileName, nullptr);
         if (Code != LUA_OK)
         {
             UE_LOG(LogUnLua, Warning, TEXT("Failed to call luaL_loadbufferx, error code: %d"), Code);
@@ -505,7 +505,7 @@ namespace UnLua
             FString ChunkName(TEXT("chunk"));
             if (FUnLuaDelegates::CustomLoadLuaFile.Execute(Env, FileName, Data, ChunkName))
             {
-                if (Env.LoadString(Data, ChunkName))
+                if (Env.LoadString(Data, ChunkName , FileName))
                     return 1;
 
                 return luaL_error(L, "file loading from custom loader error");
@@ -525,7 +525,7 @@ namespace UnLua
             if (!Loader.Execute(Env, FileName, Data, ChunkName))
                 continue;
 
-            if (Env.LoadString(Data, ChunkName))
+            if (Env.LoadString(Data, ChunkName , FileName))
                 break;
 
             return luaL_error(L, "file loading from custom loader error");

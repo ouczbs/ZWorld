@@ -7,13 +7,39 @@
 #include "HAL/FileManagerGeneric.h"
 #include "Misc/FileHelper.h"
 #include "UnLuaInterface.h"
+#include "UI/UIStruct.h"
+#include "UnLua.h"
 
+int SetLuaData(lua_State* L) {
+	if (!lua_isuserdata(L, -2)) {
+		//return -1;
+	}
+	ULuaObject* obj = (ULuaObject*)UnLua::GetUObject(L, 1, false);
+	if (obj)
+		obj->SetData(L);
+	return 1;
+}
+int GetLuaData(lua_State* L) {
+	if (!lua_isuserdata(L, -1)) {
+		return -1;
+	}
+	ULuaObject* obj = (ULuaObject*)UnLua::GetUObject(L, 1, false);
+	if (obj)
+		obj->GetData(L);
+	return 1;
+}
 UGameLuaSubsystem * UGameLuaSubsystem::LuaSystem = nullptr;
 void UGameLuaSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	//–¥»Î
 	ReloadConfig();
 	LuaSystem = this;
+	lua_State* L = UnLua::GetState();
+	lua_getglobal(L, "UE");
+	lua_pushcfunction(L , SetLuaData);
+	lua_setfield(L, -2, "SetLuaData");
+	lua_pushcfunction(L, GetLuaData);
+	lua_setfield(L, -2, "GetLuaData");
 }
 
 void UGameLuaSubsystem::Deinitialize()

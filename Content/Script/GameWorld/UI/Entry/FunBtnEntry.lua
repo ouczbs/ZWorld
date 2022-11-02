@@ -9,8 +9,8 @@ end
 
 function class:OnListItemObjectSet(object)
 	logE(object)
-    local str = object:GetData()
-    logE("call OnListItemObjectSet getdata = " .. str)
+    --local ret, str = object:GetData()
+    --logE("call OnListItemObjectSet getdata = " .. str .. ret)
 end
 
 return class

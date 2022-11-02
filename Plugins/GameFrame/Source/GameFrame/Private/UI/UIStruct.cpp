@@ -33,22 +33,31 @@ int stackDump(lua_State* L)
     return 1;
 }
 
-int ULuaObject::SetData()
+int ULuaObject::SetData(lua_State* L)
 {
-    lua_State* L = UnLua:: GetState();
-    stackDump(L);
     if (ref != ELuaRef::REF_NULL) {
         luaL_unref(L, LUA_REGISTRYINDEX, ref);
     }
     ref = luaL_ref(L, LUA_REGISTRYINDEX);
-    stackDump(L);
     return 0;
 }
 
-int ULuaObject::GetData()
+int ULuaObject::GetData(lua_State* L)
+{
+    if (ref == LUA_REFNIL) 
+        lua_pushnil(L);
+    else
+        lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
+    return 1;
+}
+
+int ULuaObject::TestGetData(ULuaObject* obj)
 {
     lua_State* L = UnLua::GetState();
-    lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
+    stackDump(L);
+    if (obj) {
+        obj->GetData(L);
+    }
     return 0;
 }
 
