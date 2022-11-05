@@ -52,9 +52,9 @@ function GA:loadBpClass()
 		__index = function(t, k)
 			if not GeneratedBpClassMap[k] then
 				if BpClassMap[k] then 
-					GeneratedBpClassMap[k] = import(BpClassMap[k])
+					GeneratedBpClassMap[k] = LoadClass(BpClassMap[k])
 				elseif BpType[k] then 
-					GeneratedBpClassMap[k] = import(BpType[k])
+					GeneratedBpClassMap[k] = LoadClass(BpType[k])
 				end 
 			end
 			return GeneratedBpClassMap[k]

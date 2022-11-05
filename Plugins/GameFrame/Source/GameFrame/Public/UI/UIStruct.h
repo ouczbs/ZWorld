@@ -33,4 +33,8 @@ UCLASS(BlueprintType)
 class GAMEFRAME_API ULuaUIEntry : public ULuaObject
 {
 	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+	bool bIsSelected = false;
 };

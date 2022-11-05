@@ -4,14 +4,21 @@
 local class = UnLua.Class(GA.UI.UIWindow)
 GA.UI.MainWindow = class
 function class:Construct()
-    local item1 = gWorld.UGamePoolSubsystem:Spawn(UE.ULuaUIEntry)
-    local item2 = gWorld.UGamePoolSubsystem:Spawn(UE.ULuaUIEntry)
-    local item3 = gWorld.UGamePoolSubsystem:Spawn(UE.ULuaUIEntry)
-    local data = GA.UI.FunBtnEntryData.new()
-    UE.SetLuaData(item1 , data)
-    self.ListView_Top:AddItem(item1)
-    self.ListView_Top:AddItem(item2)
-    self.ListView_Top:AddItem(item3)
+    local dataList = GA.Config.FunBtn:toEntryData()
+    for k,v in ipairs(dataList) do 
+        local item = gWorld.UGamePoolSubsystem:Spawn(UE.ULuaUIEntry)
+        UE.SetLuaData(item , v)
+        self.ListView_Top:AddItem(item)
+    end
+    self.ListView_Top:SetScrollBarVisibility(UE.ESlateVisibility.Collapsed)
+    self.ListView_Top.BP_OnItemSelectionChanged:Add(self , self.BP_OnItemSelectionChanged)
+end
+function class:BP_OnItemSelectionChanged(item , bIsSelected)
+    if self.selectItem then 
+        self.selectItem.bIsSelected = bIsSelected
+    end
+    item.bIsSelected =  bIsSelected
+    self.selectItem = item
 end
 
 return class

@@ -71,11 +71,13 @@ function class:beginPlay()
     --local zero = UE.FVector(0.0, 0.0, 0.0)
     --self.inputManage = GA.Manage.InputManage.new()
 
-    -- local playerControl = UE.UGameplayStatics.GetPlayerController(self.world, 0)
+    local playerControl = UE.UGameplayStatics.GetPlayerController(self.world, 0)
+    if playerControl then
+        playerControl.bShowMouseCursor = true
+    end
     -- self.playerNet = GA.Player.PlayerNet.new(playerControl)
     -- self.message_beginPlay:send()
 end
-
 function class:tick(dt)
     for _,manager in pairs(self._registerManager) do 
         if manager.tick then 

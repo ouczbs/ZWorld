@@ -62,8 +62,5 @@ local function Class(super)
 
   return new_class
 end
-local function import(resource)
-	return UE.UClass.Load(resource)
-end
 _G.import = import
 UnLua.Class = Class

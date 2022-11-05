@@ -14,7 +14,7 @@ end
 function class:openUIWindowWithClass(uiData, inIsKeepOther)
 	local tWindow , tIndex = _findUIWindow(self.m_UIBaseArray , uiData)
 	if tWindow == nil then
-		local layout = import(uiData.layout)
+		local layout = LoadClass(uiData.layout)
 		tWindow = NewObject(layout, gWorld:getWorldContext(), nil, uiData.script)
 		tWindow:AddToViewport(self.layer)
 		if not tWindow.Object then 

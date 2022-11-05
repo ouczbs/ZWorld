@@ -440,7 +440,7 @@ end
 function isValid(_object)
     if _object then
         --@strange that this method often causes an exception when using PreviewLine.
-        --local kismet = import("KismetSystemLibrary")
+        --local kismet = LoadClass("KismetSystemLibrary")
         --return kismet:IsValid(_object)
         return true
     else
