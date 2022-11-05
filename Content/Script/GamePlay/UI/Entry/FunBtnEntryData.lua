@@ -9,4 +9,5 @@ function class:getText()
 end
 function class:getIconAssert()
     return LoadObject(self.data.icon)
+   self.icon = data.icon
 end
