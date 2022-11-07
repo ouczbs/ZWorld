@@ -25,6 +25,7 @@ function class:openUIWindowWithId(id, bKeepOther)
         for k,v in pairs(_UiList) do 
             if v.id == id then 
                 uiData = v
+                _UiIdCacheList[id] = v
                 break
             end
         end

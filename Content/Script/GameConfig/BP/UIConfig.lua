@@ -12,6 +12,12 @@ local item_map = {
         layer = GA.UI.Layers.Main , 
         script = "GameWorld.UI.Main.MainWindow",
     },
+    ItemBag = { 
+        id = sequence:insc() , 
+        layout = GA.BpType.UI_LoginWin ,
+        layer = GA.UI.Layers.Main , 
+        script = "GameWorld.UI.Main.MainWindow",
+    },
 }
 local Gui = {
     item_map = item_map

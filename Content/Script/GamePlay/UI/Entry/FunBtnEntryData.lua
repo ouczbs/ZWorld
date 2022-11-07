@@ -9,5 +9,7 @@ function class:getText()
 end
 function class:getIconAssert()
     return LoadObject(self.data.icon)
-   self.icon = data.icon
+end
+function class:jumpTo()
+    gWorld.UIManager:openUIWindowWithId(self.data.uiid)
 end

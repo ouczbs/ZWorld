@@ -14,10 +14,11 @@ function class:Construct()
     self.ListView_Top.BP_OnItemSelectionChanged:Add(self , self.BP_OnItemSelectionChanged)
 end
 function class:BP_OnItemSelectionChanged(item , bIsSelected)
+    local data = UE.GetLuaData(item)
     if self.selectItem then 
-        self.selectItem.bIsSelected = bIsSelected
+        self.selectItem.bIsSelected = false
     end
-    item.bIsSelected =  bIsSelected
+    item.bIsSelected =  true
     self.selectItem = item
 end
 

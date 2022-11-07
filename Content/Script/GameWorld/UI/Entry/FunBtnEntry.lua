@@ -24,8 +24,9 @@ function class:OnRefreshSelectedState()
     self.Border:SetBrushColor(color)
 end
 function class:BP_OnItemSelectionChanged(bIsSelected)
-    logE( "ItemEntry " , self.data.id , bIsSelected)
     self.item.bIsSelected = bIsSelected
     self:OnRefreshSelectedState()
+    local data = UE.GetLuaData(item)
+    data:jumpTo()
 end
 return class
