@@ -17,7 +17,7 @@ local EFunBtnID = {
     MergeBtn = 10,
 }
 local Image = GA.Config.Image
-local Gui = GA.Config.Gui
+local Gui = GA.Config.Gui:getItemList()
 local item_list = {
     [EFunBtnID.ShopBtn] = { 
         type = EFunBtnType.ActivityMain,

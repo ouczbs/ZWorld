@@ -4,7 +4,7 @@ function class:ctor(id , data)
    self.id = id 
    self.data = data
 end
-function class:getText()
+function class:getText() 
     return self.data.text
 end
 function class:getIconAssert()
@@ -13,3 +13,4 @@ end
 function class:jumpTo()
     gWorld.UIManager:openUIWindowWithId(self.data.uiid)
 end
+logE("seeeeeeeeeeeeeeee")
