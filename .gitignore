@@ -6,8 +6,6 @@ Content\AdvancedLocomotionV4
 Content\AdvancedVillagePack
 Content\PlayerBuildingSystem
 Content\Genshin
-Content\Genshin\*
-Content\Genshin\Texture2D
 Content\Ultimate_Traversal_Anims
 Content\Table\*.ini
 Plugins\**\Binaries
@@ -20,4 +18,6 @@ Saved
 *.pb
 *.pb.cc
 *.pb.h
+!Plugins\**\*.pb.cc
+!Plugins\**\*.pb.h
 /**/.ipynb_checkpoints
