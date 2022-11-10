@@ -8,6 +8,7 @@ Content/PlayerBuildingSystem
 Content/Genshin/
 Content/Ultimate_Traversal_Anims
 Content/Table/*.ini
+Content/Script/GameConfig/Table/*
 Plugins/**/Binaries
 Plugins/**/Intermediate
 Saved
