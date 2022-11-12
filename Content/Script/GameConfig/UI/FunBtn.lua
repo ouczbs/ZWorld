@@ -16,7 +16,6 @@ local EFunBtnID = {
     PvpBtn = 9,
     MergeBtn = 10,
 }
-local Image = GA.Config.Image
 local Gui = GA.Config.Gui:getItemList()
 local item_list = {
     [EFunBtnID.ShopBtn] = { 

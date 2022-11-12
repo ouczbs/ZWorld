@@ -1,0 +1,2 @@
+
+require "GameConfig.Sprite.BPSprite"
