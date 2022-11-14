@@ -1,5 +1,5 @@
 local BpType = {
-	-- F:/ZWorld/Content/\Blueprints start
+	-- ../../../../../ZWorld/Content/\Blueprints start
 	BP_BasePlayAnim = '/Game/Blueprints/Character/BP_BasePlayAnim' ,
 	BP_OverLayAnim = '/Game/Blueprints/Character/BP_OverLayAnim' ,
 	BP_PlayAnim = '/Game/Blueprints/Character/BP_PlayAnim' ,
@@ -13,23 +13,22 @@ local BpType = {
 	UI_EditorAnimRetarget = '/Game/Blueprints/Widget/Editor/UI_EditorAnimRetarget' ,
 	UI_FoldPanel = '/Game/Blueprints/Widget/Editor/UI_FoldPanel' ,
 	UI_SourceComboBox = '/Game/Blueprints/Widget/Editor/UI_SourceComboBox' ,
-	-- F:/ZWorld/Content/\Blueprints end
+	-- ../../../../../ZWorld/Content/\Blueprints end
 
-	-- F:/ZWorld/Content/\UI start
+	-- ../../../../../ZWorld/Content/\UI start
+	UI_ItemBag = '/Game/UI/UI_ItemBag' ,
 	UI_LoginWin = '/Game/UI/UI_LoginWin' ,
 	UI_MainWin = '/Game/UI/UI_MainWin' ,
 	UI_FunBtnEntry = '/Game/UI/Entry/UI_FunBtnEntry' ,
-	-- F:/ZWorld/Content/\UI end
+	UI_ItemGrid = '/Game/UI/Grid/UI_ItemGrid' ,
+	UI_BaseWindow = '/Game/UI/Super/UI_BaseWindow' ,
+	-- ../../../../../ZWorld/Content/\UI end
 
-	-- F:/ZWorld/Content/\Resource\Blueprints start
-	BP_LightStudio = '/Game/Resource/Blueprints/BP_LightStudio' ,
-	-- F:/ZWorld/Content/\Resource\Blueprints end
-
-	-- F:/ZWorld/Content/\TouchSystem\Blueprints start
+	-- ../../../../../ZWorld/Content/\TouchSystem\Blueprints start
 	UI_Camera = '/Game/TouchSystem/Blueprints/UI/UI_Camera' ,
 	UI_Joystick = '/Game/TouchSystem/Blueprints/UI/UI_Joystick' ,
 	UI_TouchWindow = '/Game/TouchSystem/Blueprints/UI/UI_TouchWindow' ,
-	-- F:/ZWorld/Content/\TouchSystem\Blueprints end
+	-- ../../../../../ZWorld/Content/\TouchSystem\Blueprints end
 
 }
 GA.BpType = BpType

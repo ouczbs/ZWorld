@@ -12,11 +12,17 @@ local item_map = {
         layer = GA.UI.Layers.Main , 
         script = "GameWorld.UI.Main.MainWindow",
     },
+    BaseWindow = { 
+        id = sequence:insc() , 
+        layout = GA.BpType.UI_ItemBag ,
+        layer = GA.UI.Layers.Tier1 , 
+        script = "GameWorld.UI.Bag.ItemBagWindow",
+    },
     ItemBag = { 
         id = sequence:insc() , 
-        layout = GA.BpType.UI_LoginWin ,
-        layer = GA.UI.Layers.Main , 
-        script = "GameWorld.UI.Main.MainWindow",
+        layout = GA.BpType.UI_BaseWindow ,
+        layer = GA.UI.Layers.Tier1 , 
+        script = "GameWorld.UI.Super.BaseWindow",
     },
 }
 local Gui = {

@@ -13,4 +13,3 @@ end
 function class:jumpTo()
     gWorld.UIManager:openUIWindowWithId(self.data.uiid)
 end
-logE("seeeeeeeeeeeeeeee")

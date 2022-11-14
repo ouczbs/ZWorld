@@ -15,18 +15,16 @@ function class:OnListItemObjectSet(item)
     self:OnRefreshSelectedState()
 end
 function class:OnRefreshSelectedState()
-    local color = nil
-    if self.item.bIsSelected then 
-        color = UE.FLinearColor(1 , 0, 0, 1)
-    else 
-        color = UE.FLinearColor(0 , 1, 0, 1)
-    end
+    local bIsSelected = self.item.bIsSelected
+    local color = bIsSelected and UE.FLinearColor(1 , 0, 0, 1) or UE.FLinearColor(0 , 1, 0, 1)
     self.Border:SetBrushColor(color)
 end
 function class:BP_OnItemSelectionChanged(bIsSelected)
     self.item.bIsSelected = bIsSelected
     self:OnRefreshSelectedState()
-    local data = UE.GetLuaData(item)
-    data:jumpTo()
+    if bIsSelected then
+        local data = UE.GetLuaData(self.item)
+        data:jumpTo()
+    end
 end
 return class
