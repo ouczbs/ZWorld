@@ -11,3 +11,18 @@ function InscSequence:insc(seed)
     self.seed = seed + 1
     return seed
 end
+
+function InscSequence.Generator(start)
+    start = start or 1
+    local sequence = GA.Core.InscSequence.new(start)
+    local mt = {
+        __index = function(t, k)
+            local v = rawget(t,k)
+            if v then return v end
+            v = sequence:insc()
+            rawset(t, k, v)
+            return v
+        end,
+    }
+    return setmetatable({}, mt)
+end

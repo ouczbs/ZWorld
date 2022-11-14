@@ -1,7 +1,7 @@
 local EFunBtnType = {
     ActivityMain = 1,
     ImportanceMenu = 2,
-    MainMenu = 3,
+    MainMenu = 3,GID
 
 }
 local EFunBtnID = {
@@ -16,67 +16,67 @@ local EFunBtnID = {
     PvpBtn = 9,
     MergeBtn = 10,
 }
-local Gui = GA.Config.Gui:getItemList()
+local GID = GA.Config.Gui.ID
 local item_list = {
     [EFunBtnID.ShopBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "商城",
         icon = '/Game/TouchSystem/Textures/UI/ButtonCraft',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.BossBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "背包",
         icon = '/Game/TouchSystem/Textures/UI/ButtonDemolish',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.QuestBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "副本",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.PetBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "暗器",
         icon = '/Game/TouchSystem/Textures/UI/ButtonCraft',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.EquipBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "寻宝",
         icon = '/Game/TouchSystem/Textures/UI/ButtonDemolish',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.GuildBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "符文",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.RuneBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "日常",
         icon = '/Game/TouchSystem/Textures/UI/ButtonCraft',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.DailyNeedTo] = { 
         type = EFunBtnType.ActivityMain,
         text = "领主",
         icon = '/Game/TouchSystem/Textures/UI/ButtonDemolish',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.PvpBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "转职",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
     [EFunBtnID.MergeBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "变强",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = Gui.ItemBag.id,
+        uiid = GID.ItemBag,
     },
 }
 local FunBtn = {}

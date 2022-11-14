@@ -20,7 +20,3 @@ end
 function class:hide()
     self.Object:SetVisibility(UE.ESlateVisibility.Collapsed)
 end
-
-function class:tick()
-
-end

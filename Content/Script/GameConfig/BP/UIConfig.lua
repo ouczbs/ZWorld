@@ -1,32 +1,34 @@
-local sequence = GA.Core.InscSequence.new(1)
+local ID = GA.Core.InscSequence.Generator(1)
 local item_map = {
     Login = { 
-        id = sequence:insc(1) ,
+        id = ID.Login,
         layout = GA.BpType.UI_LoginWin , 
         layer = GA.UI.Layers.Main ,
         script = "GameWorld.UI.Login.LoginWindow",
     }, 
     Main = { 
-        id = sequence:insc() , 
+        id = ID.Main , 
         layout = GA.BpType.UI_MainWin ,
         layer = GA.UI.Layers.Main , 
         script = "GameWorld.UI.Main.MainWindow",
     },
-    BaseWindow = { 
-        id = sequence:insc() , 
+    MainParent = { 
+        id = ID.MainParent , 
+        layout = GA.BpType.UI_MainParent ,
+        layer = GA.UI.Layers.Parent, 
+        script = "GameWorld.UI.Parent.MainParent",
+    },
+    ItemBag = { 
+        id = ID.ItemBag , 
         layout = GA.BpType.UI_ItemBag ,
         layer = GA.UI.Layers.Tier1 , 
         script = "GameWorld.UI.Bag.ItemBagWindow",
-    },
-    ItemBag = { 
-        id = sequence:insc() , 
-        layout = GA.BpType.UI_BaseWindow ,
-        layer = GA.UI.Layers.Tier1 , 
-        script = "GameWorld.UI.Super.BaseWindow",
+        parent =  ID.MainParent, 
     },
 }
 local Gui = {
-    item_map = item_map
+    item_map = item_map,
+    ID = ID
 }
 
 function Gui:getItemList()

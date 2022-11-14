@@ -22,6 +22,12 @@ function class:openUIWindowWithClass(uiData, inIsKeepOther)
 			tWindow = GA.UI.UIWindowBP.new(uobject)
 		end
 		tWindow:init(uiData)
+
+		local parent = uiData.parent
+		if parent then 
+			local pWindow = gWorld.UIManager:openUIWindowWithId(parent,inIsKeepOther)
+			pWindow:addChildWindow(tWindow)
+		end
 	end
 	return self:openUIInternal(tWindow, inIsKeepOther, tIndex)
 end
