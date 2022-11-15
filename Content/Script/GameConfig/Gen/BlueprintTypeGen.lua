@@ -20,6 +20,7 @@ local BpType = {
 	UI_LoginWin = '/Game/UI/UI_LoginWin' ,
 	UI_MainWin = '/Game/UI/UI_MainWin' ,
 	UI_FunBtnEntry = '/Game/UI/Entry/UI_FunBtnEntry' ,
+	UI_PublicFunBtnEntry = '/Game/UI/Entry/UI_PublicFunBtnEntry' ,
 	UI_ItemGrid = '/Game/UI/Grid/UI_ItemGrid' ,
 	UI_MainParent = '/Game/UI/Parent/UI_MainParent' ,
 	-- /Game\UI end

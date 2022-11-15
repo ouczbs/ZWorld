@@ -5,6 +5,7 @@ local class = UnLua.Class(GA.UI.UIParent)
 GA.UI.MainParent = class
 function class:Construct()
     logE(self.GridPanel, "MainParent")
+    self.itemList = GA.UI.ItemList.new(self, self.ListView_Slide)
     --getUIListByID
 end
 function class:removeBefore(child)
@@ -22,7 +23,7 @@ function class:updateUIList(child)
     end
     self.uiList = uiList
     self.type = type
-    
+    self.itemList:refreshFromData(uiList)
 end
 function class:onAddChildWindow(child)
     if self.childName == child.__name then return end

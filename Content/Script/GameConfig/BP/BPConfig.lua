@@ -1,6 +1,7 @@
 local item_list = {
     {bp_name = "BP_MMOGameMode" , lua_name = "MMOGameMode"},
     {bp_name = "UI_FunBtnEntry" , lua_name = "GameWorld.UI.Entry.FunBtnEntry"},
+    {bp_name = "UI_PublicFunBtnEntry" , lua_name = "GameWorld.UI.Entry.PublicFunBtnEntry"},
     {bp_name = "UI_ItemGrid" , lua_name = "GameWorld.UI.Grid.ItemGrid"},
 }
 local BP = {

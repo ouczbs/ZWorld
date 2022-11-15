@@ -52,6 +52,7 @@ local function findUIListByID(uid)
 end
 function PublicFun:getUIListByID(uid)
     local list,type = findUIListByID(uid)
+    if not list then return end
     local _UICheck = GA.Config.UICheck
     local newList = {}
     for k,v in ipairs(list) do 

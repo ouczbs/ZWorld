@@ -22,6 +22,7 @@ local BpClassMap = {
 	UI_LoginWin = BpType.UI_LoginWin ,
 	UI_MainWin = BpType.UI_MainWin ,
 	UI_FunBtnEntry = BpType.UI_FunBtnEntry ,
+	UI_PublicFunBtnEntry = BpType.UI_PublicFunBtnEntry ,
 	UI_ItemGrid = BpType.UI_ItemGrid ,
 	UI_MainParent = BpType.UI_MainParent ,
 	-- /Game\UI end
