@@ -10,15 +10,16 @@ def parseBPFile(file_dir, file_name):
         output_List_BpClass.append("\t{0} = BpType.{0} ,".format(file_name ))
         pass  
 def parseFiles(root_dir , rel_dir  , callback = parseBPFile):
-    output_List.append("\t-- {0} start".format(root_dir))
-    output_List_BpClass.append("\t-- {0} start".format(root_dir))
+    append_dir = root_dir.replace(rel_dir,"/Game")
+    output_List.append("\t-- {0} start".format(append_dir))
+    output_List_BpClass.append("\t-- {0} start".format(append_dir))
     for parent,dir_names,file_names in os.walk(root_dir):
         rel_parent = parent.replace(rel_dir,"/Game")
         rel_parent = rel_parent.replace("\\","/")
         for file_name in file_names:
             callback(rel_parent, file_name)
-    output_List.append("\t-- {0} end\n".format(root_dir))
-    output_List_BpClass.append("\t-- {0} end\n".format(root_dir))
+    output_List.append("\t-- {0} end\n".format(append_dir))
+    output_List_BpClass.append("\t-- {0} end\n".format(append_dir))
 def AutoGenBlueprintTypeRefForLua(root_dir):
     UPrint("excute ", root_dir, "AutoGenBlueprintTypeRefForLua")
     out_file = root_dir + "/Script/GameConfig/Gen/BlueprintTypeGen.lua";

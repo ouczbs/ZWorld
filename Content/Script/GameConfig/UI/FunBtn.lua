@@ -1,82 +1,67 @@
-local EFunBtnType = {
-    ActivityMain = 1,
-    ImportanceMenu = 2,
-    MainMenu = 3,GID
-
-}
-local EFunBtnID = {
-    ShopBtn =  1,
-    BossBtn = 2,
-    QuestBtn = 3,
-    PetBtn = 4,
-    EquipBtn = 5,
-    GuildBtn = 6,
-    RuneBtn = 7,
-    DailyNeedTo = 8,
-    PvpBtn = 9,
-    MergeBtn = 10,
-}
-local GID = GA.Config.Gui.ID
+local EFunBtnType = GA.Core.InscSequence.Generator(1)
+local EFunBtnID = GA.Core.InscSequence.Generator(1)
+-- 主界面功能按钮
+local UID = GA.Config.Gui.ID
 local item_list = {
     [EFunBtnID.ShopBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "商城",
         icon = '/Game/TouchSystem/Textures/UI/ButtonCraft',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.BossBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "背包",
         icon = '/Game/TouchSystem/Textures/UI/ButtonDemolish',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.QuestBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "副本",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.PetBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "暗器",
         icon = '/Game/TouchSystem/Textures/UI/ButtonCraft',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.EquipBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "寻宝",
         icon = '/Game/TouchSystem/Textures/UI/ButtonDemolish',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.GuildBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "符文",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.RuneBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "日常",
         icon = '/Game/TouchSystem/Textures/UI/ButtonCraft',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.DailyNeedTo] = { 
         type = EFunBtnType.ActivityMain,
         text = "领主",
         icon = '/Game/TouchSystem/Textures/UI/ButtonDemolish',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.PvpBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "转职",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
     [EFunBtnID.MergeBtn] = { 
         type = EFunBtnType.ActivityMain,
         text = "变强",
         icon = '/Game/TouchSystem/Textures/UI/ButtonBag',
-        uiid = GID.ItemBag,
+        uid = UID.ItemBag,
     },
 }
 local FunBtn = {}
@@ -85,10 +70,13 @@ function FunBtn:initItemList()
 end
 function FunBtn:toEntryData()
     local dataList = {}
+    local _UICheck = GA.Config.UICheck
     local dclass = GA.UI.FunBtnEntryData
     for k,v in pairs(item_list) do 
-        local data = dclass.new(k,v)
-        table.insert(dataList , data)
+        if _UICheck(v.uid) then
+            local data = dclass.new(k,v)
+            table.insert(dataList , data)
+        end
     end
     return dataList
 end

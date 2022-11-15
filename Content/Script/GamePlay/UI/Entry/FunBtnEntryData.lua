@@ -11,5 +11,5 @@ function class:getIconAssert()
     return LoadObject(self.data.icon)
 end
 function class:jumpTo()
-    gWorld.UIManager:openUIWindowWithId(self.data.uiid)
+    gWorld.UIManager:openUIWindowWithId(self.data.uid)
 end
