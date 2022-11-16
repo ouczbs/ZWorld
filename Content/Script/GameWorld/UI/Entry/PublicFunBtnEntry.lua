@@ -14,9 +14,7 @@ function class:OnListItemObjectSet(item)
     self:OnRefreshSelectedState()
 end
 function class:OnRefreshSelectedState()
-    local bIsSelected = self.item.bIsSelected
-    local color = bIsSelected and UE.FLinearColor(1 , 0, 0, 1) or UE.FLinearColor(0 , 1, 0, 1)
-    self.Border:SetBrushColor(color)
+    
 end
 function class:BP_OnItemSelectionChanged(bIsSelected)
     self.item.bIsSelected = bIsSelected
