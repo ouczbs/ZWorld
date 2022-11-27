@@ -1,4 +1,4 @@
-
+#pragma once
 #include "CoreMinimal.h"
 #include "Engine/DeveloperSettings.h"
 #include "BPSubsystemSetting.generated.h"

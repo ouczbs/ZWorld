@@ -1,7 +1,9 @@
 // Copyright
 
 #include "ToolMenu/EditorMenuExtensions.h"
+#include "ToolMenu/EditorMenuActions.h"
 #include "ToolMenus.h"
+
 #define LOCTEXT_NAMESPACE "FEditorMenuExtensions"
 void FEditorMenuExtensions::GenerateMenuContent(FMenuBuilder& MenuBuilder)
 {
@@ -64,7 +66,7 @@ void FEditorMenuExtensions::ExtendToolbars()
 				LOCTEXT("Game_ToolTip", "List Of Game Tools"),
 				FNewMenuDelegate::CreateStatic(&FEditorMenuExtensions::GenerateMenuContent),
 				false,
-				FSlateIcon(FEditorStyle::GetStyleSetName() , "Game.Tool")
+				FSlateIcon(FAppStyle::GetAppStyleSetName(), "Game.Tool")
 			);
 		}
 	}
