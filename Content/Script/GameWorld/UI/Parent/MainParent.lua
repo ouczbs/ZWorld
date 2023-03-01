@@ -8,12 +8,14 @@ function class:Construct()
     self.itemList = GA.UI.ItemList.new(self, self.ListView_Slide)
     --getUIListByID
 end
-function class:removeBefore(child)
-    if self.childName then 
-        gWorld.UIManager:closeUIWindow(self.childName)
+function class:updateChildUId(child)
+    if self.childUId == child.__uid then return end
+    if self.childUId then 
+        gWorld.UIManager:closeUIWindow(self.childUId)
         self.MainPanel:RemoveChildAt(0)
-        self.childName = child.__name
     end
+    self.childUId = child.__uid
+    return true
 end
 function class:updateUIList(child)
     local uid = child.__uid
@@ -26,8 +28,9 @@ function class:updateUIList(child)
     self.itemList:refreshFromData(uiList)
 end
 function class:onAddChildWindow(child)
-    if self.childName == child.__name then return end
-    self:removeBefore(child)
+    if not self:updateChildUId(child) then 
+        return
+    end
     local slot = self.MainPanel:AddChildToCanvas(child)
     slot:SetLayout(self.LayoutData)
     self:updateUIList(child)

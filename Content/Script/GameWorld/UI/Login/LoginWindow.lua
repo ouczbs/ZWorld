@@ -10,8 +10,8 @@ function class:Construct()
 end
 
 function class:OnClicked_EnterGameBtn()
-	gWorld.UIManager:closeUIWindow("Login")
-	gWorld.UIManager:openUIWindowWithName("Main")
+	gWorld.UIManager:closeUIWindow(UID.Login)
+	gWorld.UIManager:openUIWindowWithId(UID.Main)
 	local controller = gWorld:getMainController()
 	UE.UWidgetBlueprintLibrary.SetInputMode_GameAndUIEx(controller, nil , UE.EMouseLockMode.DoNotLock , true)
 end

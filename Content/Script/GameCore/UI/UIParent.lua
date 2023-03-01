@@ -6,7 +6,6 @@ end
 function class:init(data)
     self._childList = {}
     self.__uid = data.id
-    self.__cname = data.name
     if self.onInit then 
         self:onInit(data)
     end

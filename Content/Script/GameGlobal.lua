@@ -22,4 +22,5 @@ function GA.CreateGlobalVar()
     gRefers   =  GA.Config.Refers
     gWorld      = GA.World.new()
     pbc = GA.Network.Pbc.new()
+    UID = GA.Config.Gui.ID
 end

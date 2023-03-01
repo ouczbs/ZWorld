@@ -4,11 +4,10 @@ function class:ctor()
 
 end
 
-function class:init(data)
+function class:init(data, state)
     self.__uid = data.id
-    self.__cname = data.name
     if self.onInit then 
-        self:onInit(data)
+        self:onInit(data, state)
     end
 end
 

@@ -11,7 +11,7 @@ local function _findUIWindow(windowArray , uiData)
 		end
 	end
 end
-function class:openUIWindowWithClass(uiData, inIsKeepOther)
+function class:openUIWindowWithClass(uiData, state,  inIsKeepOther)
 	local tWindow , tIndex = _findUIWindow(self.m_UIBaseArray , uiData)
 	if tWindow == nil then
 		local layout = LoadClass(uiData.layout)
@@ -21,11 +21,11 @@ function class:openUIWindowWithClass(uiData, inIsKeepOther)
 			local uobject = tWindow
 			tWindow = GA.UI.UIWindowBP.new(uobject)
 		end
-		tWindow:init(uiData)
+		tWindow:init(uiData, state)
 
 		local parent = uiData.parent
 		if parent then 
-			local pWindow = gWorld.UIManager:openUIWindowWithId(parent,inIsKeepOther)
+			local pWindow = gWorld.UIManager:openUIWindowWithId(parent,nil, inIsKeepOther)
 			pWindow:addChildWindow(tWindow)
 		end
 	end

@@ -67,7 +67,7 @@ function class:getMainPlayer()
     return UE.UGameplayStatics.GetPlayerPawn(self._uWorldContext, 0)
 end
 function class:beginPlay()
-    gWorld.UIManager:openUIWindowWithName("Login")
+    gWorld.UIManager:openUIWindowWithId(UID.Main)
     --local zero = UE.FVector(0.0, 0.0, 0.0)
     --self.inputManage = GA.Manage.InputManage.new()
 
