@@ -1,11 +1,10 @@
 --lua class : SurviveGameMode
 ---@type MMOGameMode
 local class = UnLua.Class()
+require "World"
 
 function class:OverrideInitGame()
-    require "World"
     GA.CreateGlobalVar()
-    
     pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
     pbc.EncodeConfig(GA.Config.BP , "BPConfig")
     --GA.Config.TestBP = pbc.DecodeConfig("BPConfig")
