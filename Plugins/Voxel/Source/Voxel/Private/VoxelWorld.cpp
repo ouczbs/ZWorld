@@ -1094,7 +1094,7 @@ void AVoxelWorld::CreateWorldInternal(const FVoxelWorldCreateInfo& Info)
 
 		// Do that after Clear/Generate
 		ApplyPlaceableItems();
-
+		PlaceableItemManager->ApplyToData(GetData());
 		// Let events add other items
 		OnGenerateWorld.Broadcast();
 

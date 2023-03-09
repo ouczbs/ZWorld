@@ -25,8 +25,8 @@ function class:registerLuaManager(key , luaclass)
     self[key] = manager
     table.insert(self._registerManager , manager)
 end
-function class:registerUManager(key , luaclass)  
-    local manager =  self:spawnLuaActor(luaclass, UE.FVector(0.0, 0.0, 0.0) , UE.FRotator(0, 0, 0))
+function class:registerUManager(key , uclass, script)  
+    local manager =  self:spawnLuaActor(uclass, script, UE.FVector(0.0, 0.0, 0.0) , UE.FRotator(0, 0, 0))
     manager:init()
     self[key] = manager
     table.insert(self._registerManager , manager)
@@ -38,13 +38,14 @@ end
 function class:InitializeWorld(WorldContext)
     self:CreateSubSystem()
     self._uWorldContext = WorldContext
-    --self:registerUManager("MessageManager" , GA.Manager.MessageManager)
 
     self:registerLuaManager("EventBus" , GA.Event.EventBus)
     self:registerLuaManager("InterfaceBus" , GA.Interface.InterfaceBus)
     self:registerLuaManager("InputManager" , GA.Input.InputManager)
     self:registerLuaManager("Scheduler" , GA.Time.Scheduler)
     self:registerLuaManager("UIManager" , GA.UI.UIManager)
+
+    self:registerUManager("VoxelWorld" , UE.AVoxelWorld, gLuaObject.AVoxelWorld)
 
     for key,luaclass in pairs(GA.initManagerList) do 
         self:registerLuaManager(key , luaclass)
@@ -98,10 +99,9 @@ function class:spawnActor(uclass, uLocation , uRotation , params)
     return self._uWorldContext:SpawnActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn)
 end
 
-function class:spawnLuaActor(luaclass, uLocation , uRotation , params)
-    local uclass,modulename = luaclass:GetUnluaBind()
+function class:spawnLuaActor(uclass, script, uLocation , uRotation , params)
     local transform = UE.FTransform(uRotation:ToQuat(), uLocation)
-    return self._uWorldContext:SpawnLuaActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn , self , self, modulename)
+    return self._uWorldContext:SpawnActor(uclass , transform , params and params.collisionHandle or UE.ESpawnActorCollisionHandlingMethod.AlwaysSpawn , self , self, script)
 end
 
 

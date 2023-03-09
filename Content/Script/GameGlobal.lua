@@ -18,6 +18,7 @@ function GA.CreateGlobalVar()
     gRequest = {}
     gRootPath = gRootPath or "../../../Content"
     gGameConst      = GA.Config.GameConst
+    gLuaObject   = GA.Config.LuaObject
     gLuaType   =  GA.Config.LuaType
     gRefers   =  GA.Config.Refers
     gWorld      = GA.World.new()

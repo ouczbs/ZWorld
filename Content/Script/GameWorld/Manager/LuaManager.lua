@@ -1,9 +1,6 @@
 --lua class : test_C
 
 local class = Class(GA.Manager, "LuaManager")
-function class:GetUnluaBind()
-    return GA.BpClass.BP_LuaManager,"GameWorld.Manager.LuaManager"
-end
 function class:beginPlay()
 
 end
