@@ -5,7 +5,7 @@ Intermediate
 Content/AdvancedLocomotionV4
 Content/AdvancedVillagePack
 Content/PlayerBuildingSystem
-Content/Genshin/
+#Content/Genshin/
 Content/Ultimate_Traversal_Anims
 Content/Table/*.ini
 Content/Script/GameConfig/Table/*
