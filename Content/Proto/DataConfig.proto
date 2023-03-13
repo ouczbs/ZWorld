@@ -5,10 +5,11 @@ option optimize_for = SPEED;
 message GuiConfig{
     message UIItem{
         int32 id = 1;
+        int32 layer = 2;
         string layout = 3;
-        int32 layer = 4;
+        string script = 4;
     }
-    map<string, UIItem> item_map = 1;
+    repeated UIItem item_list = 1;
 }
 
 message BPConfig{

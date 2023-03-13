@@ -45,7 +45,7 @@ function class:InitializeWorld(WorldContext)
     self:registerLuaManager("Scheduler" , GA.Time.Scheduler)
     self:registerLuaManager("UIManager" , GA.UI.UIManager)
 
-    self:registerUManager("VoxelWorld" , UE.AVoxelWorld, gLuaObject.AVoxelWorld)
+    --self:registerUManager("VoxelWorld" , UE.AVoxelWorld, gLuaObject.AVoxelWorld)
 
     for key,luaclass in pairs(GA.initManagerList) do 
         self:registerLuaManager(key , luaclass)

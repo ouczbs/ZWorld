@@ -24,6 +24,7 @@ namespace pb {
 PROTOBUF_CONSTEXPR GuiConfig_UIItem::GuiConfig_UIItem(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.layout_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.script_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.id_)*/0
   , /*decltype(_impl_.layer_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
@@ -36,20 +37,9 @@ struct GuiConfig_UIItemDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GuiConfig_UIItemDefaultTypeInternal _GuiConfig_UIItem_default_instance_;
-PROTOBUF_CONSTEXPR GuiConfig_ItemMapEntry_DoNotUse::GuiConfig_ItemMapEntry_DoNotUse(
-    ::_pbi::ConstantInitialized) {}
-struct GuiConfig_ItemMapEntry_DoNotUseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GuiConfig_ItemMapEntry_DoNotUseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GuiConfig_ItemMapEntry_DoNotUseDefaultTypeInternal() {}
-  union {
-    GuiConfig_ItemMapEntry_DoNotUse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GuiConfig_ItemMapEntry_DoNotUseDefaultTypeInternal _GuiConfig_ItemMapEntry_DoNotUse_default_instance_;
 PROTOBUF_CONSTEXPR GuiConfig::GuiConfig(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.item_map_)*/{::_pbi::ConstantInitialized()}
+    /*decltype(_impl_.item_list_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct GuiConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR GuiConfigDefaultTypeInternal()
@@ -88,7 +78,7 @@ struct BPConfigDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BPConfigDefaultTypeInternal _BPConfig_default_instance_;
 }  // namespace pb
-static ::_pb::Metadata file_level_metadata_DataConfig_2eproto[5];
+static ::_pb::Metadata file_level_metadata_DataConfig_2eproto[4];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_DataConfig_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_DataConfig_2eproto = nullptr;
 
@@ -100,25 +90,16 @@ const uint32_t TableStruct_DataConfig_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_UIItem, _impl_.id_),
-  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_UIItem, _impl_.layout_),
   PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_UIItem, _impl_.layer_),
-  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_ItemMapEntry_DoNotUse, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_ItemMapEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_ItemMapEntry_DoNotUse, key_),
-  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_ItemMapEntry_DoNotUse, value_),
-  0,
-  1,
+  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_UIItem, _impl_.layout_),
+  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig_UIItem, _impl_.script_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::pb::GuiConfig, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig, _impl_.item_map_),
+  PROTOBUF_FIELD_OFFSET(::pb::GuiConfig, _impl_.item_list_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::pb::BPConfig_BPItem, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -137,35 +118,32 @@ const uint32_t TableStruct_DataConfig_2eproto::offsets[] PROTOBUF_SECTION_VARIAB
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::pb::GuiConfig_UIItem)},
-  { 9, 17, -1, sizeof(::pb::GuiConfig_ItemMapEntry_DoNotUse)},
-  { 19, -1, -1, sizeof(::pb::GuiConfig)},
-  { 26, -1, -1, sizeof(::pb::BPConfig_BPItem)},
-  { 34, -1, -1, sizeof(::pb::BPConfig)},
+  { 10, -1, -1, sizeof(::pb::GuiConfig)},
+  { 17, -1, -1, sizeof(::pb::BPConfig_BPItem)},
+  { 25, -1, -1, sizeof(::pb::BPConfig)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::pb::_GuiConfig_UIItem_default_instance_._instance,
-  &::pb::_GuiConfig_ItemMapEntry_DoNotUse_default_instance_._instance,
   &::pb::_GuiConfig_default_instance_._instance,
   &::pb::_BPConfig_BPItem_default_instance_._instance,
   &::pb::_BPConfig_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_DataConfig_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020DataConfig.proto\022\002pb\"\264\001\n\tGuiConfig\022,\n\010"
-  "item_map\030\001 \003(\0132\032.pb.GuiConfig.ItemMapEnt"
-  "ry\0323\n\006UIItem\022\n\n\002id\030\001 \001(\005\022\016\n\006layout\030\003 \001(\t"
-  "\022\r\n\005layer\030\004 \001(\005\032D\n\014ItemMapEntry\022\013\n\003key\030\001"
-  " \001(\t\022#\n\005value\030\002 \001(\0132\024.pb.GuiConfig.UIIte"
-  "m:\0028\001\"_\n\010BPConfig\022&\n\titem_list\030\001 \003(\0132\023.p"
-  "b.BPConfig.BPItem\032+\n\006BPItem\022\017\n\007bp_name\030\001"
-  " \001(\t\022\020\n\010lua_name\030\002 \001(\tB\002H\001b\006proto3"
+  "\n\020DataConfig.proto\022\002pb\"y\n\tGuiConfig\022\'\n\ti"
+  "tem_list\030\001 \003(\0132\024.pb.GuiConfig.UIItem\032C\n\006"
+  "UIItem\022\n\n\002id\030\001 \001(\005\022\r\n\005layer\030\002 \001(\005\022\016\n\006lay"
+  "out\030\003 \001(\t\022\016\n\006script\030\004 \001(\t\"_\n\010BPConfig\022&\n"
+  "\titem_list\030\001 \003(\0132\023.pb.BPConfig.BPItem\032+\n"
+  "\006BPItem\022\017\n\007bp_name\030\001 \001(\t\022\020\n\010lua_name\030\002 \001"
+  "(\tB\002H\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_DataConfig_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_DataConfig_2eproto = {
-    false, false, 314, descriptor_table_protodef_DataConfig_2eproto,
+    false, false, 254, descriptor_table_protodef_DataConfig_2eproto,
     "DataConfig.proto",
-    &descriptor_table_DataConfig_2eproto_once, nullptr, 0, 5,
+    &descriptor_table_DataConfig_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_DataConfig_2eproto::offsets,
     file_level_metadata_DataConfig_2eproto, file_level_enum_descriptors_DataConfig_2eproto,
     file_level_service_descriptors_DataConfig_2eproto,
@@ -195,6 +173,7 @@ GuiConfig_UIItem::GuiConfig_UIItem(const GuiConfig_UIItem& from)
   GuiConfig_UIItem* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.layout_){}
+    , decltype(_impl_.script_){}
     , decltype(_impl_.id_){}
     , decltype(_impl_.layer_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -206,6 +185,14 @@ GuiConfig_UIItem::GuiConfig_UIItem(const GuiConfig_UIItem& from)
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_layout().empty()) {
     _this->_impl_.layout_.Set(from._internal_layout(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.script_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.script_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_script().empty()) {
+    _this->_impl_.script_.Set(from._internal_script(), 
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
@@ -220,6 +207,7 @@ inline void GuiConfig_UIItem::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.layout_){}
+    , decltype(_impl_.script_){}
     , decltype(_impl_.id_){0}
     , decltype(_impl_.layer_){0}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -227,6 +215,10 @@ inline void GuiConfig_UIItem::SharedCtor(
   _impl_.layout_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.layout_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.script_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.script_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -242,6 +234,7 @@ GuiConfig_UIItem::~GuiConfig_UIItem() {
 inline void GuiConfig_UIItem::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.layout_.Destroy();
+  _impl_.script_.Destroy();
 }
 
 void GuiConfig_UIItem::SetCachedSize(int size) const {
@@ -255,6 +248,7 @@ void GuiConfig_UIItem::Clear() {
   (void) cached_has_bits;
 
   _impl_.layout_.ClearToEmpty();
+  _impl_.script_.ClearToEmpty();
   ::memset(&_impl_.id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.layer_) -
       reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.layer_));
@@ -275,6 +269,14 @@ const char* GuiConfig_UIItem::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
+      // int32 layer = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       // string layout = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
@@ -285,11 +287,13 @@ const char* GuiConfig_UIItem::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
-      // int32 layer = 4;
+      // string script = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.layer_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_script();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "pb.GuiConfig.UIItem.script"));
         } else
           goto handle_unusual;
         continue;
@@ -328,6 +332,12 @@ uint8_t* GuiConfig_UIItem::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
+  // int32 layer = 2;
+  if (this->_internal_layer() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_layer(), target);
+  }
+
   // string layout = 3;
   if (!this->_internal_layout().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
@@ -338,10 +348,14 @@ uint8_t* GuiConfig_UIItem::_InternalSerialize(
         3, this->_internal_layout(), target);
   }
 
-  // int32 layer = 4;
-  if (this->_internal_layer() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(4, this->_internal_layer(), target);
+  // string script = 4;
+  if (!this->_internal_script().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_script().data(), static_cast<int>(this->_internal_script().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "pb.GuiConfig.UIItem.script");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_script(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -367,12 +381,19 @@ size_t GuiConfig_UIItem::ByteSizeLong() const {
         this->_internal_layout());
   }
 
+  // string script = 4;
+  if (!this->_internal_script().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_script());
+  }
+
   // int32 id = 1;
   if (this->_internal_id() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
-  // int32 layer = 4;
+  // int32 layer = 2;
   if (this->_internal_layer() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_layer());
   }
@@ -397,6 +418,9 @@ void GuiConfig_UIItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const
 
   if (!from._internal_layout().empty()) {
     _this->_internal_set_layout(from._internal_layout());
+  }
+  if (!from._internal_script().empty()) {
+    _this->_internal_set_script(from._internal_script());
   }
   if (from._internal_id() != 0) {
     _this->_internal_set_id(from._internal_id());
@@ -427,6 +451,10 @@ void GuiConfig_UIItem::InternalSwap(GuiConfig_UIItem* other) {
       &_impl_.layout_, lhs_arena,
       &other->_impl_.layout_, rhs_arena
   );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.script_, lhs_arena,
+      &other->_impl_.script_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(GuiConfig_UIItem, _impl_.layer_)
       + sizeof(GuiConfig_UIItem::_impl_.layer_)
@@ -443,20 +471,6 @@ void GuiConfig_UIItem::InternalSwap(GuiConfig_UIItem* other) {
 
 // ===================================================================
 
-GuiConfig_ItemMapEntry_DoNotUse::GuiConfig_ItemMapEntry_DoNotUse() {}
-GuiConfig_ItemMapEntry_DoNotUse::GuiConfig_ItemMapEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-    : SuperType(arena) {}
-void GuiConfig_ItemMapEntry_DoNotUse::MergeFrom(const GuiConfig_ItemMapEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
-::PROTOBUF_NAMESPACE_ID::Metadata GuiConfig_ItemMapEntry_DoNotUse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_DataConfig_2eproto_getter, &descriptor_table_DataConfig_2eproto_once,
-      file_level_metadata_DataConfig_2eproto[1]);
-}
-
-// ===================================================================
-
 class GuiConfig::_Internal {
  public:
 };
@@ -465,20 +479,16 @@ GuiConfig::GuiConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  if (arena != nullptr && !is_message_owned) {
-    arena->OwnCustomDestructor(this, &GuiConfig::ArenaDtor);
-  }
   // @@protoc_insertion_point(arena_constructor:pb.GuiConfig)
 }
 GuiConfig::GuiConfig(const GuiConfig& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   GuiConfig* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      /*decltype(_impl_.item_map_)*/{}
+      decltype(_impl_.item_list_){from._impl_.item_list_}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _this->_impl_.item_map_.MergeFrom(from._impl_.item_map_);
   // @@protoc_insertion_point(copy_constructor:pb.GuiConfig)
 }
 
@@ -487,7 +497,7 @@ inline void GuiConfig::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      /*decltype(_impl_.item_map_)*/{::_pbi::ArenaInitialized(), arena}
+      decltype(_impl_.item_list_){arena}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -496,7 +506,6 @@ GuiConfig::~GuiConfig() {
   // @@protoc_insertion_point(destructor:pb.GuiConfig)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
-    ArenaDtor(this);
     return;
   }
   SharedDtor();
@@ -504,14 +513,9 @@ GuiConfig::~GuiConfig() {
 
 inline void GuiConfig::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.item_map_.Destruct();
-  _impl_.item_map_.~MapField();
+  _impl_.item_list_.~RepeatedPtrField();
 }
 
-void GuiConfig::ArenaDtor(void* object) {
-  GuiConfig* _this = reinterpret_cast< GuiConfig* >(object);
-  _this->_impl_.item_map_.Destruct();
-}
 void GuiConfig::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -522,7 +526,7 @@ void GuiConfig::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.item_map_.Clear();
+  _impl_.item_list_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -532,13 +536,13 @@ const char* GuiConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // map<string, .pb.GuiConfig.UIItem> item_map = 1;
+      // repeated .pb.GuiConfig.UIItem item_list = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(&_impl_.item_map_, ptr);
+            ptr = ctx->ParseMessage(_internal_add_item_list(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
@@ -574,30 +578,12 @@ uint8_t* GuiConfig::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // map<string, .pb.GuiConfig.UIItem> item_map = 1;
-  if (!this->_internal_item_map().empty()) {
-    using MapType = ::_pb::Map<std::string, ::pb::GuiConfig_UIItem>;
-    using WireHelper = GuiConfig_ItemMapEntry_DoNotUse::Funcs;
-    const auto& map_field = this->_internal_item_map();
-    auto check_utf8 = [](const MapType::value_type& entry) {
-      (void)entry;
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        entry.first.data(), static_cast<int>(entry.first.length()),
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-        "pb.GuiConfig.ItemMapEntry.key");
-    };
-
-    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
-      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
-        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
-        check_utf8(entry);
-      }
-    } else {
-      for (const auto& entry : map_field) {
-        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
-        check_utf8(entry);
-      }
-    }
+  // repeated .pb.GuiConfig.UIItem item_list = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_item_list_size()); i < n; i++) {
+    const auto& repfield = this->_internal_item_list(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -616,13 +602,11 @@ size_t GuiConfig::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // map<string, .pb.GuiConfig.UIItem> item_map = 1;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_item_map_size());
-  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >::const_iterator
-      it = this->_internal_item_map().begin();
-      it != this->_internal_item_map().end(); ++it) {
-    total_size += GuiConfig_ItemMapEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  // repeated .pb.GuiConfig.UIItem item_list = 1;
+  total_size += 1UL * this->_internal_item_list_size();
+  for (const auto& msg : this->_impl_.item_list_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -643,7 +627,7 @@ void GuiConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROT
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_impl_.item_map_.MergeFrom(from._impl_.item_map_);
+  _this->_impl_.item_list_.MergeFrom(from._impl_.item_list_);
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -661,13 +645,13 @@ bool GuiConfig::IsInitialized() const {
 void GuiConfig::InternalSwap(GuiConfig* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.item_map_.InternalSwap(&other->_impl_.item_map_);
+  _impl_.item_list_.InternalSwap(&other->_impl_.item_list_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GuiConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_DataConfig_2eproto_getter, &descriptor_table_DataConfig_2eproto_once,
-      file_level_metadata_DataConfig_2eproto[2]);
+      file_level_metadata_DataConfig_2eproto[1]);
 }
 
 // ===================================================================
@@ -920,7 +904,7 @@ void BPConfig_BPItem::InternalSwap(BPConfig_BPItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BPConfig_BPItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_DataConfig_2eproto_getter, &descriptor_table_DataConfig_2eproto_once,
-      file_level_metadata_DataConfig_2eproto[3]);
+      file_level_metadata_DataConfig_2eproto[2]);
 }
 
 // ===================================================================
@@ -1105,7 +1089,7 @@ void BPConfig::InternalSwap(BPConfig* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BPConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_DataConfig_2eproto_getter, &descriptor_table_DataConfig_2eproto_once,
-      file_level_metadata_DataConfig_2eproto[4]);
+      file_level_metadata_DataConfig_2eproto[3]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1114,10 +1098,6 @@ PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::pb::GuiConfig_UIItem*
 Arena::CreateMaybeMessage< ::pb::GuiConfig_UIItem >(Arena* arena) {
   return Arena::CreateMessageInternal< ::pb::GuiConfig_UIItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::pb::GuiConfig_ItemMapEntry_DoNotUse*
-Arena::CreateMaybeMessage< ::pb::GuiConfig_ItemMapEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::pb::GuiConfig_ItemMapEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::pb::GuiConfig*
 Arena::CreateMaybeMessage< ::pb::GuiConfig >(Arena* arena) {

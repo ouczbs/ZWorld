@@ -37,6 +37,20 @@ class ZWORLD_API UMMOVoxelGenerator : public UVoxelGenerator
 	GENERATED_BODY()
 
 public:
+	UFUNCTION(BlueprintImplementableEvent, Category = "Voxel")
+	float GetValue(float X, float Y, float Z, float LOD);
+	UFUNCTION(BlueprintImplementableEvent, Category = "Voxel")
+	EVoxelMaterialConfig GetMaterialType(float X, float Y, float Z, float LOD);
+	FVoxelMaterial GetMaterial(float X, float Y, float Z, float LOD);
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Voxel")
+		bool bLuaObject = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Voxel")
+		int SingleIndex = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Voxel")
+		TArray<int> DesiredIndexs;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Voxel")
+		TArray<float> DesiredAlphas;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Voxel")
 		FLinearColor Color = FLinearColor::Transparent;
 
@@ -58,16 +72,17 @@ public:
 	TVoxelSharedRef<FVoxelGeneratorInstance> GetInstance() override;
 };
 
-class FVoxelMMOGeneratorInstance : public TVoxelGeneratorInstanceHelper<FVoxelMMOGeneratorInstance, UMMOVoxelGenerator>, public IUnLuaInterface
+class FVoxelMMOGeneratorInstance : public TVoxelGeneratorInstanceHelper<FVoxelMMOGeneratorInstance, UMMOVoxelGenerator>
 {
 public:
 	using Super = TVoxelGeneratorInstanceHelper<FVoxelMMOGeneratorInstance, UMMOVoxelGenerator>;
 
 	const FVoxelMaterial Material;
 	const TArray<FVoxelMMOGeneratorDataItemConfig> DataItemConfigs;
-
+	UMMOVoxelGenerator* LuaObject;
 	explicit FVoxelMMOGeneratorInstance(UMMOVoxelGenerator& Object)
 		: Super(&Object)
+		, LuaObject(&Object)
 		, Material(FVoxelMaterial::CreateFromColor(Object.Color))
 		, DataItemConfigs(Object.DataItemConfigs)
 	{

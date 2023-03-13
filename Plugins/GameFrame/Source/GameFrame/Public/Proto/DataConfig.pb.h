@@ -29,9 +29,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/map.h>  // IWYU pragma: export
-#include <google/protobuf/map_entry.h>
-#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -57,9 +54,6 @@ extern BPConfig_BPItemDefaultTypeInternal _BPConfig_BPItem_default_instance_;
 class GuiConfig;
 struct GuiConfigDefaultTypeInternal;
 extern GuiConfigDefaultTypeInternal _GuiConfig_default_instance_;
-class GuiConfig_ItemMapEntry_DoNotUse;
-struct GuiConfig_ItemMapEntry_DoNotUseDefaultTypeInternal;
-extern GuiConfig_ItemMapEntry_DoNotUseDefaultTypeInternal _GuiConfig_ItemMapEntry_DoNotUse_default_instance_;
 class GuiConfig_UIItem;
 struct GuiConfig_UIItemDefaultTypeInternal;
 extern GuiConfig_UIItemDefaultTypeInternal _GuiConfig_UIItem_default_instance_;
@@ -68,7 +62,6 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::pb::BPConfig* Arena::CreateMaybeMessage<::pb::BPConfig>(Arena*);
 template<> ::pb::BPConfig_BPItem* Arena::CreateMaybeMessage<::pb::BPConfig_BPItem>(Arena*);
 template<> ::pb::GuiConfig* Arena::CreateMaybeMessage<::pb::GuiConfig>(Arena*);
-template<> ::pb::GuiConfig_ItemMapEntry_DoNotUse* Arena::CreateMaybeMessage<::pb::GuiConfig_ItemMapEntry_DoNotUse>(Arena*);
 template<> ::pb::GuiConfig_UIItem* Arena::CreateMaybeMessage<::pb::GuiConfig_UIItem>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace pb {
@@ -197,8 +190,9 @@ class GuiConfig_UIItem final :
 
   enum : int {
     kLayoutFieldNumber = 3,
+    kScriptFieldNumber = 4,
     kIdFieldNumber = 1,
-    kLayerFieldNumber = 4,
+    kLayerFieldNumber = 2,
   };
   // string layout = 3;
   void clear_layout();
@@ -214,6 +208,20 @@ class GuiConfig_UIItem final :
   std::string* _internal_mutable_layout();
   public:
 
+  // string script = 4;
+  void clear_script();
+  const std::string& script() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_script(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_script();
+  PROTOBUF_NODISCARD std::string* release_script();
+  void set_allocated_script(std::string* script);
+  private:
+  const std::string& _internal_script() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_script(const std::string& value);
+  std::string* _internal_mutable_script();
+  public:
+
   // int32 id = 1;
   void clear_id();
   int32_t id() const;
@@ -223,7 +231,7 @@ class GuiConfig_UIItem final :
   void _internal_set_id(int32_t value);
   public:
 
-  // int32 layer = 4;
+  // int32 layer = 2;
   void clear_layer();
   int32_t layer() const;
   void set_layer(int32_t value);
@@ -241,6 +249,7 @@ class GuiConfig_UIItem final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr layout_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr script_;
     int32_t id_;
     int32_t layer_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -248,32 +257,6 @@ class GuiConfig_UIItem final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_DataConfig_2eproto;
 };
-// -------------------------------------------------------------------
-
-class GuiConfig_ItemMapEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<GuiConfig_ItemMapEntry_DoNotUse, 
-    std::string, ::pb::GuiConfig_UIItem,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<GuiConfig_ItemMapEntry_DoNotUse, 
-    std::string, ::pb::GuiConfig_UIItem,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
-  GuiConfig_ItemMapEntry_DoNotUse();
-  explicit PROTOBUF_CONSTEXPR GuiConfig_ItemMapEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit GuiConfig_ItemMapEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const GuiConfig_ItemMapEntry_DoNotUse& other);
-  static const GuiConfig_ItemMapEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const GuiConfig_ItemMapEntry_DoNotUse*>(&_GuiConfig_ItemMapEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "pb.GuiConfig.ItemMapEntry.key");
- }
-  static bool ValidateValue(void*) { return true; }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  friend struct ::TableStruct_DataConfig_2eproto;
-};
-
 // -------------------------------------------------------------------
 
 class GuiConfig final :
@@ -324,7 +307,7 @@ class GuiConfig final :
                &_GuiConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    1;
 
   friend void swap(GuiConfig& a, GuiConfig& b) {
     a.Swap(&b);
@@ -385,8 +368,6 @@ class GuiConfig final :
   protected:
   explicit GuiConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
   public:
 
   static const ClassData _class_data_;
@@ -401,24 +382,25 @@ class GuiConfig final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kItemMapFieldNumber = 1,
+    kItemListFieldNumber = 1,
   };
-  // map<string, .pb.GuiConfig.UIItem> item_map = 1;
-  int item_map_size() const;
+  // repeated .pb.GuiConfig.UIItem item_list = 1;
+  int item_list_size() const;
   private:
-  int _internal_item_map_size() const;
+  int _internal_item_list_size() const;
   public:
-  void clear_item_map();
+  void clear_item_list();
+  ::pb::GuiConfig_UIItem* mutable_item_list(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::pb::GuiConfig_UIItem >*
+      mutable_item_list();
   private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >&
-      _internal_item_map() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >*
-      _internal_mutable_item_map();
+  const ::pb::GuiConfig_UIItem& _internal_item_list(int index) const;
+  ::pb::GuiConfig_UIItem* _internal_add_item_list();
   public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >&
-      item_map() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >*
-      mutable_item_map();
+  const ::pb::GuiConfig_UIItem& item_list(int index) const;
+  ::pb::GuiConfig_UIItem* add_item_list();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::pb::GuiConfig_UIItem >&
+      item_list() const;
 
   // @@protoc_insertion_point(class_scope:pb.GuiConfig)
  private:
@@ -428,11 +410,7 @@ class GuiConfig final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-        GuiConfig_ItemMapEntry_DoNotUse,
-        std::string, ::pb::GuiConfig_UIItem,
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> item_map_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::pb::GuiConfig_UIItem > item_list_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -488,7 +466,7 @@ class BPConfig_BPItem final :
                &_BPConfig_BPItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   friend void swap(BPConfig_BPItem& a, BPConfig_BPItem& b) {
     a.Swap(&b);
@@ -657,7 +635,7 @@ class BPConfig final :
                &_BPConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    3;
 
   friend void swap(BPConfig& a, BPConfig& b) {
     a.Swap(&b);
@@ -797,6 +775,26 @@ inline void GuiConfig_UIItem::set_id(int32_t value) {
   // @@protoc_insertion_point(field_set:pb.GuiConfig.UIItem.id)
 }
 
+// int32 layer = 2;
+inline void GuiConfig_UIItem::clear_layer() {
+  _impl_.layer_ = 0;
+}
+inline int32_t GuiConfig_UIItem::_internal_layer() const {
+  return _impl_.layer_;
+}
+inline int32_t GuiConfig_UIItem::layer() const {
+  // @@protoc_insertion_point(field_get:pb.GuiConfig.UIItem.layer)
+  return _internal_layer();
+}
+inline void GuiConfig_UIItem::_internal_set_layer(int32_t value) {
+  
+  _impl_.layer_ = value;
+}
+inline void GuiConfig_UIItem::set_layer(int32_t value) {
+  _internal_set_layer(value);
+  // @@protoc_insertion_point(field_set:pb.GuiConfig.UIItem.layer)
+}
+
 // string layout = 3;
 inline void GuiConfig_UIItem::clear_layout() {
   _impl_.layout_.ClearToEmpty();
@@ -847,59 +845,98 @@ inline void GuiConfig_UIItem::set_allocated_layout(std::string* layout) {
   // @@protoc_insertion_point(field_set_allocated:pb.GuiConfig.UIItem.layout)
 }
 
-// int32 layer = 4;
-inline void GuiConfig_UIItem::clear_layer() {
-  _impl_.layer_ = 0;
+// string script = 4;
+inline void GuiConfig_UIItem::clear_script() {
+  _impl_.script_.ClearToEmpty();
 }
-inline int32_t GuiConfig_UIItem::_internal_layer() const {
-  return _impl_.layer_;
+inline const std::string& GuiConfig_UIItem::script() const {
+  // @@protoc_insertion_point(field_get:pb.GuiConfig.UIItem.script)
+  return _internal_script();
 }
-inline int32_t GuiConfig_UIItem::layer() const {
-  // @@protoc_insertion_point(field_get:pb.GuiConfig.UIItem.layer)
-  return _internal_layer();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GuiConfig_UIItem::set_script(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.script_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:pb.GuiConfig.UIItem.script)
 }
-inline void GuiConfig_UIItem::_internal_set_layer(int32_t value) {
+inline std::string* GuiConfig_UIItem::mutable_script() {
+  std::string* _s = _internal_mutable_script();
+  // @@protoc_insertion_point(field_mutable:pb.GuiConfig.UIItem.script)
+  return _s;
+}
+inline const std::string& GuiConfig_UIItem::_internal_script() const {
+  return _impl_.script_.Get();
+}
+inline void GuiConfig_UIItem::_internal_set_script(const std::string& value) {
   
-  _impl_.layer_ = value;
+  _impl_.script_.Set(value, GetArenaForAllocation());
 }
-inline void GuiConfig_UIItem::set_layer(int32_t value) {
-  _internal_set_layer(value);
-  // @@protoc_insertion_point(field_set:pb.GuiConfig.UIItem.layer)
+inline std::string* GuiConfig_UIItem::_internal_mutable_script() {
+  
+  return _impl_.script_.Mutable(GetArenaForAllocation());
 }
-
-// -------------------------------------------------------------------
+inline std::string* GuiConfig_UIItem::release_script() {
+  // @@protoc_insertion_point(field_release:pb.GuiConfig.UIItem.script)
+  return _impl_.script_.Release();
+}
+inline void GuiConfig_UIItem::set_allocated_script(std::string* script) {
+  if (script != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.script_.SetAllocated(script, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.script_.IsDefault()) {
+    _impl_.script_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:pb.GuiConfig.UIItem.script)
+}
 
 // -------------------------------------------------------------------
 
 // GuiConfig
 
-// map<string, .pb.GuiConfig.UIItem> item_map = 1;
-inline int GuiConfig::_internal_item_map_size() const {
-  return _impl_.item_map_.size();
+// repeated .pb.GuiConfig.UIItem item_list = 1;
+inline int GuiConfig::_internal_item_list_size() const {
+  return _impl_.item_list_.size();
 }
-inline int GuiConfig::item_map_size() const {
-  return _internal_item_map_size();
+inline int GuiConfig::item_list_size() const {
+  return _internal_item_list_size();
 }
-inline void GuiConfig::clear_item_map() {
-  _impl_.item_map_.Clear();
+inline void GuiConfig::clear_item_list() {
+  _impl_.item_list_.Clear();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >&
-GuiConfig::_internal_item_map() const {
-  return _impl_.item_map_.GetMap();
+inline ::pb::GuiConfig_UIItem* GuiConfig::mutable_item_list(int index) {
+  // @@protoc_insertion_point(field_mutable:pb.GuiConfig.item_list)
+  return _impl_.item_list_.Mutable(index);
 }
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >&
-GuiConfig::item_map() const {
-  // @@protoc_insertion_point(field_map:pb.GuiConfig.item_map)
-  return _internal_item_map();
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::pb::GuiConfig_UIItem >*
+GuiConfig::mutable_item_list() {
+  // @@protoc_insertion_point(field_mutable_list:pb.GuiConfig.item_list)
+  return &_impl_.item_list_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >*
-GuiConfig::_internal_mutable_item_map() {
-  return _impl_.item_map_.MutableMap();
+inline const ::pb::GuiConfig_UIItem& GuiConfig::_internal_item_list(int index) const {
+  return _impl_.item_list_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::pb::GuiConfig_UIItem >*
-GuiConfig::mutable_item_map() {
-  // @@protoc_insertion_point(field_mutable_map:pb.GuiConfig.item_map)
-  return _internal_mutable_item_map();
+inline const ::pb::GuiConfig_UIItem& GuiConfig::item_list(int index) const {
+  // @@protoc_insertion_point(field_get:pb.GuiConfig.item_list)
+  return _internal_item_list(index);
+}
+inline ::pb::GuiConfig_UIItem* GuiConfig::_internal_add_item_list() {
+  return _impl_.item_list_.Add();
+}
+inline ::pb::GuiConfig_UIItem* GuiConfig::add_item_list() {
+  ::pb::GuiConfig_UIItem* _add = _internal_add_item_list();
+  // @@protoc_insertion_point(field_add:pb.GuiConfig.item_list)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::pb::GuiConfig_UIItem >&
+GuiConfig::item_list() const {
+  // @@protoc_insertion_point(field_list:pb.GuiConfig.item_list)
+  return _impl_.item_list_;
 }
 
 // -------------------------------------------------------------------
@@ -1053,8 +1090,6 @@ BPConfig::item_list() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
