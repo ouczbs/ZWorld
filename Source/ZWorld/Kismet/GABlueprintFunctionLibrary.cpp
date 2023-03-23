@@ -57,3 +57,22 @@ void UGABlueprintFunctionLibrary::SwitchMaterialWithParams(UMaterialInterface* O
 			newMaterial->SetFontParameterValue(SPInfo.Name, Value, FontPage);
 	}
 }
+
+void UGABlueprintFunctionLibrary::AsyncLoadPackage(FName& PackageName, const FOnAsyncLoadFinished& OnAsyncLoadFinished)
+{
+	auto LoadPackagePath = FPaths::GetBaseFilename(PackageName.ToString(), false);
+	LoadPackageAsync(
+		LoadPackagePath,
+		FLoadPackageAsyncDelegate::CreateLambda([=](const FName& PackageName, UPackage* LoadedPackage, EAsyncLoadingResult::Type Result)
+			{
+				bool IsSuccess = Result == EAsyncLoadingResult::Succeeded;
+				OnAsyncLoadFinished.ExecuteIfBound(IsSuccess);
+			}), 0, PKG_ContainsMap);
+}
+
+float UGABlueprintFunctionLibrary::GetLoadProgress(FName& PackageName)
+{
+	float FloatPercentage = GetAsyncLoadPercentage(PackageName);
+	FloatPercentage = FMath::Clamp(FloatPercentage / 100, 0.f, 1.f);
+	return FloatPercentage;
+}

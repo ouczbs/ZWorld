@@ -28,18 +28,16 @@ void Message::PostDisconnect()
 	}
 }
 
-void Message::SendPbcMessage(const std::string & buffer, int type, int id)
+void Message::SendPbcMessage(const std::string & buffer, int id)
 {
 	
 	//UE_LOG(LogTemp, Display, TEXT("Send protobuf, Msg: %s, size[%d]."), *FString(msg.c_str()), msg.size());
 
 	// 协议格式
 	// --------------------------------------------
-	// |Length(2)|MessageType(2)|Cmd(2)Payload(Length)|
+	// |Length(2)|Cmd(2)Payload(Length)|
 	// --------------------------------------------
-	uint16_t header = buffer.size() + 6;
-	_socket->send(&header, 2);
-	header = type;
+	uint16_t header = buffer.size() + 4;
 	_socket->send(&header, 2);
 	header = id;
 	_socket->send(&header, 2);
@@ -54,7 +52,7 @@ void Message::OnReceiveMessage(std::vector<uint8_t> msg)
 {
     // 协议格式
     // --------------------------------------------
-    // |Length(2)|MessageType(2)|Cmd(2)Payload(Length)|
+    // |Length(2)|Cmd(2)Payload(Length)|
     // --------------------------------------------
     if (_buffer.empty())
         _buffer = std::move(msg);
@@ -62,7 +60,7 @@ void Message::OnReceiveMessage(std::vector<uint8_t> msg)
         _buffer.insert(_buffer.end(), msg.begin(), msg.end());
     
     auto size = _buffer.size();
-    if (size < 6)  // 至少4个字节吧
+    if (size < 4)  // 至少4个字节吧
         return;
 	while (_buffer.size() > 0)
 	{
@@ -70,14 +68,13 @@ void Message::OnReceiveMessage(std::vector<uint8_t> msg)
 		auto length = *(uint16_t*)(&_buffer[0]);
 		if (size < length)  // 没收到完整协议就等待
 			return;
-		int16 type = *(int16*)(&_buffer[2]);
-		int16  id = *(int16*)(&_buffer[4]);
-		std::string pb(_buffer.begin() + 6, _buffer.begin() + length);
+		int16 id = *(int16*)(&_buffer[2]);
+		std::string pb(_buffer.begin() + 4, _buffer.begin() + length);
 		//UE_LOG(LogTemp, Display, TEXT("Recv protobuf, Msg: %s, size[%d], buf[%d]."), *FString(pb.c_str()), msg.size(), _buffer.size());
 		_buffer.erase(_buffer.begin(), _buffer.begin() + length);
-		if (OnLuaRcvPbcMsg) 
+		if (OnLuaRecvPbcMsg) 
 		{
-			OnLuaRcvPbcMsg(pb , type ,id);
+			OnLuaRecvPbcMsg(pb,id);
 		}
 	}
 }

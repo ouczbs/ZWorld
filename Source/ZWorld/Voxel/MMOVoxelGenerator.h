@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FastNoise/VoxelFastNoise.h"
+#include "FastNoise/VoxelFastNoise.inl"
 #include "VoxelGenerators/VoxelGenerator.h"
 #include "VoxelGenerators/VoxelGeneratorHelpers.h"
 #include "UnLuaInterface.h"
@@ -31,17 +33,22 @@ struct FVoxelMMOGeneratorDataItemConfig
 /**
  * 
  */
+static FVoxelFastNoise FastNoise;
 UCLASS()
 class ZWORLD_API UMMOVoxelGenerator : public UVoxelGenerator
 {
 	GENERATED_BODY()
 
 public:
+
+	UFUNCTION(BlueprintCallable, Category = "Voxel")
+		double IQNoise_3D(double x, double y, double z, double frequency, double octaves) const;
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Voxel")
-	float GetValue(float X, float Y, float Z, float LOD);
+		double GetValue(double X, double Y, double Z, double LOD);
 	UFUNCTION(BlueprintImplementableEvent, Category = "Voxel")
-	EVoxelMaterialConfig GetMaterialType(float X, float Y, float Z, float LOD);
-	FVoxelMaterial GetMaterial(float X, float Y, float Z, float LOD);
+	EVoxelMaterialConfig GetMaterialType(double X, double Y, double Z, double LOD);
+	FVoxelMaterial GetMaterial(double X, double Y, double Z, double LOD);
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Voxel")
 		bool bLuaObject = false;

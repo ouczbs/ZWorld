@@ -17,17 +17,18 @@ setmetatable(upMeta, {__call = function(t, msg , request, handle)
     local wrap = {
         content = pbc.Encode(msg , upMeta.pb ),
         request = InscSequence(),
-        response = request.request,
+        response = request,
     }
     if handle then 
         pbc:RegisterHandle(wrap.request , handle)
     end
-    pbc.Send( pbc.EncodeWrap(wrap) , request.type, t.id )
+    pbc.Send( pbc.EncodeWrap(wrap) , t.id )
 end
 })
 local function upDelegate(cmd)
-    upMeta.id = pbc.Cmd2Id(cmd)
-    upMeta.pb = pbc.Cmd2Pb(cmd)
+    local proto = pbc.Cmd2Proto(cmd)
+    upMeta.id = proto.id
+    upMeta.pb = proto.pb
     return upMeta
 end 
 

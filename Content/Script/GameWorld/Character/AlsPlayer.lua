@@ -1,8 +1,7 @@
-
 local class = Class()
---GA.Character.ALS_Character = class
+-- GA.Character.ALS_Character = class
 function class:Initialize(Initializer)
-    
+    print("als init")
 end
 function class:ReceiveBeginPlay()
     self:RefreshOverlayObject()
@@ -12,8 +11,9 @@ function class:OnOverlayModeChanged()
     self:RefreshOverlayLinkedAnimationLayer()
     self:RefreshOverlayObject()
 end
-function class:OnMantlingStarted(TargetPrimitive, TargetRelativeLocation ,TargetRelativeRotation , MantlingHeight, MantlingType)
-    if MantlingType == UE.EAlsMantlingType.Low then 
+function class:OnMantlingStarted(TargetPrimitive, TargetRelativeLocation, TargetRelativeRotation, MantlingHeight,
+    MantlingType)
+    if MantlingType == UE.EAlsMantlingType.Low then
         self:ClearOverlayObject()
     end
 end
@@ -31,12 +31,12 @@ function class:RefreshOverlayLinkedAnimationLayer()
     if OverlayAnimationInstanceClass then
         self.Mesh:LinkAnimClassLayers(OverlayAnimationInstanceClass)
     end
-    self.OverlayAnimationInstanceClass  = OverlayAnimationInstanceClass
+    self.OverlayAnimationInstanceClass = OverlayAnimationInstanceClass
 end
 
 function class:RefreshOverlayObject()
     -- todo
-    --self:AttachOverlayObject()
+    -- self:AttachOverlayObject()
 end
 function class:ClearOverlayObject()
     -- todo
@@ -48,5 +48,23 @@ function class:AttachOverlayObject()
     -- todo
     UE.UAlsConstants.HandRightGunVirtualBoneName()
 end
+-- function class:Q_Pressed()
+--     -- local forward = self.Camera:GetForwardVector()
+--     -- local start_pos = self.Camera:K2_GetComponentLocation()
+--     -- local end_pos = start_pos + forward * 1000
+--     -- local TraceChannel = UE.ETraceTypeQuery.Visibility
+--     -- local isHit, OutHit = UE.UKismetSystemLibrary.LineTraceSingle(self, start_pos, end_pos, TraceChannel, nil, nil, nil,
+--     --     nil, true)
+--     local rayStart = self:K2_GetActorLocation()
+--     rayStart.Z = 100
+--     gWorld.VoxelWorld:RemoveSphere(rayStart, 100)
+--     print("Q_Pressed>>>>>>>>>>>>>>")
+-- end
 
+-- function class:E_Pressed()
+--     local rayStart = self:K2_GetActorLocation()
+--     rayStart.Z = 100
+--     gWorld.VoxelWorld:AddSphere(rayStart, 100)
+--     print("E_Pressed>>>>>>>>>>>>>>")
+-- end
 return class

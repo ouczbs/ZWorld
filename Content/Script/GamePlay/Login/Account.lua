@@ -6,10 +6,7 @@ function class:LoginAccountCmd()
         account = self.account,
         password = self.password
     }
-    gRequest.request = nil 
-    gRequest.type = gRefers.MT.GameLogin
-    logE(Pbc , pbc.up , pbc.Send)
-    pbc.up.LoginAccountCmd(msg , gRequest , self.LoginAccountCmdAck)
+    pbc.up.LoginAccountCmd(msg , nil , self.LoginAccountCmdAck)
 end
 
 function class:LoginAccountCmdAck(msg,request)

@@ -27,8 +27,8 @@ class Message
 {
 public:
 
-	using LuaRcvPbcEvt = std::function<void(const std::string, int16 type, int16 id)>;
-	LuaRcvPbcEvt OnLuaRcvPbcMsg;
+	using LuaRcvPbcEvt = std::function<void(const std::string, int16 id)>;
+	LuaRcvPbcEvt OnLuaRecvPbcMsg;
 
     explicit Message(const std::string &remote = "mmm.io:9876");
 	~Message();
@@ -36,7 +36,7 @@ public:
 	void PostConnect();
 	void PostDisconnect();
 
-	void SendPbcMessage(const std::string& buffer, int type, int id);
+	void SendPbcMessage(const std::string& buffer, int id);
 
 	void OnSendMessage();
     void OnReceiveMessage(std::vector<uint8_t> msg);

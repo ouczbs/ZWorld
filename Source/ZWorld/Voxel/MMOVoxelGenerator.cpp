@@ -7,7 +7,12 @@
 #include <VoxelMaterialBuilder.h>
 
 
-FVoxelMaterial UMMOVoxelGenerator::GetMaterial(float X, float Y, float Z, float LOD)
+double UMMOVoxelGenerator::IQNoise_3D(double x, double y, double z, double frequency, double octaves) const
+{
+	return FastNoise.IQNoise_3D(x, y, z, frequency, octaves);
+}
+
+FVoxelMaterial UMMOVoxelGenerator::GetMaterial(double X, double Y, double Z, double LOD)
 {
 	FVoxelMaterialBuilder Builder;
 	auto type = GetMaterialType(X ,Y ,Z ,LOD);
@@ -40,7 +45,7 @@ TVoxelSharedRef<FVoxelGeneratorInstance> UMMOVoxelGenerator::GetInstance()
 	return MakeVoxelShared<FVoxelMMOGeneratorInstance>(*this);
 }
 
-v_flt FVoxelMMOGeneratorInstance::GetValueImpl(v_flt X, v_flt Y, v_flt Z, int32 LOD, const FVoxelItemStack& Items) const
+v_flt FVoxelMMOGeneratorInstance::GetValueImpl(double X, double Y, double Z, int32 LOD, const FVoxelItemStack& Items) const
 {
 	if (LuaObject && LuaObject->bLuaObject) {
 		return LuaObject->GetValue(X ,Y ,Z ,LOD );

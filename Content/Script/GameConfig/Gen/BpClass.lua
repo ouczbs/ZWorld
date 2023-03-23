@@ -2,11 +2,8 @@ local BpType = GA.BpType or {}
 local BpClassMap = {
 	-- bpmap reg auto-gen
 	-- /Game\Blueprints start
-	BP_BasePlayAnim = BpType.BP_BasePlayAnim ,
-	BP_OverLayAnim = BpType.BP_OverLayAnim ,
-	BP_PlayAnim = BpType.BP_PlayAnim ,
-	BP_PlayCharacter = BpType.BP_PlayCharacter ,
-	BP_PlayCharacterBase = BpType.BP_PlayCharacterBase ,
+	BP_Als_Player = BpType.BP_Als_Player ,
+	BP_Als_PlayerController = BpType.BP_Als_PlayerController ,
 	BP_PlayerController = BpType.BP_PlayerController ,
 	BP_PlayerState = BpType.BP_PlayerState ,
 	BP_GameOwner = BpType.BP_GameOwner ,
@@ -18,12 +15,18 @@ local BpClassMap = {
 	-- /Game\Blueprints end
 
 	-- /Game\UI start
+	UI_BuildingWin = BpType.UI_BuildingWin ,
 	UI_ItemBag = BpType.UI_ItemBag ,
+	UI_LoadingWin = BpType.UI_LoadingWin ,
 	UI_LoginWin = BpType.UI_LoginWin ,
 	UI_MainWin = BpType.UI_MainWin ,
+	UI_BuildingClassEntry = BpType.UI_BuildingClassEntry ,
+	UI_BuildingItemEntry = BpType.UI_BuildingItemEntry ,
 	UI_FunBtnEntry = BpType.UI_FunBtnEntry ,
 	UI_PublicFunBtnEntry = BpType.UI_PublicFunBtnEntry ,
 	UI_ItemGrid = BpType.UI_ItemGrid ,
+	UI_BuildingBtn = BpType.UI_BuildingBtn ,
+	UI_BagParent = BpType.UI_BagParent ,
 	UI_MainParent = BpType.UI_MainParent ,
 	-- /Game\UI end
 

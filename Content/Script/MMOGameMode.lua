@@ -4,6 +4,10 @@ local class = UnLua.Class()
 require "World"
 
 function class:OverrideInitGame()
+    if not GA.initManagerList then 
+        gWorld:ReInitializeWorld(self:GetWorld())
+        return
+    end
     GA.CreateGlobalVar()
     pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
     pbc.EncodeConfig(GA.Config.BP , "BPConfig")

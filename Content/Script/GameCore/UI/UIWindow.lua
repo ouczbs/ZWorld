@@ -10,7 +10,9 @@ function class:init(data, state)
         self:onInit(data, state)
     end
 end
-
+function class:rqDestroy()
+    gWorld.UIManager:closeUIWindow(self.__uid)
+end
 function class:destroy()
     self:RemoveFromParent()
     self:Release()

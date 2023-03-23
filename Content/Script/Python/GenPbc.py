@@ -42,27 +42,27 @@ def AutoGenPbc_Id(cmdList , outFile):
     with open(outFile, 'wb') as f:
         f.write("\n".join(outputList).encode())
         
-def AutoGenPbc_Enum(protoDir ,outFile ):
-    protoFNs = glob.glob(os.path.join(protoDir, '*.proto'))
-    pattern = re.compile(r"enum *([a-zA-Z0-9_]+)[ \r\n]*{([^}]*)}")
-    protoOutLua = []
-    protoOutLua.append("--This is a cmd desc file auto gen from origin-proto.")
-    protoOutLua.append("--Please do no modification.")
-    protoOutLua.append("local EMsgId = {")
-    for proto in protoFNs:
-        if "Cmd" in proto:
-            continue
-        protoContent = ""
-        with open(proto, 'rb') as f:
-            protoContent = f.read().decode()
-        enums = pattern.findall(protoContent) or []
-        for enum in enums:
-            res = "\t" + enum[0] + " = {"
-            res += enum[1].replace(";",",").replace("\n","\n\t") + "}"
-            protoOutLua.append(res)
-    protoOutLua.append("\n\n}")
-    with open(outFile, 'wb') as f:
-        f.write("\n".join(protoOutLua).encode())
+# def AutoGenPbc_Enum(protoDir ,outFile ):
+#     protoFNs = glob.glob(os.path.join(protoDir, '*.proto'))
+#     pattern = re.compile(r"enum *([a-zA-Z0-9_]+)[ \r\n]*{([^}]*)}")
+#     protoOutLua = []
+#     protoOutLua.append("--This is a cmd desc file auto gen from origin-proto.")
+#     protoOutLua.append("--Please do no modification.")
+#     protoOutLua.append("local EMsgId = {")
+#     for proto in protoFNs:
+#         if "Cmd" in proto:
+#             continue
+#         protoContent = ""
+#         with open(proto, 'rb') as f:
+#             protoContent = f.read().decode()
+#         enums = pattern.findall(protoContent) or []
+#         for enum in enums:
+#             res = "\t" + enum[0] + " = {"
+#             res += enum[1].replace(";",",").replace("\n","\n\t") + "}"
+#             protoOutLua.append(res)
+#     protoOutLua.append("\n\n}")
+#     with open(outFile, 'wb') as f:
+#         f.write("\n".join(protoOutLua).encode())
         
 def GenAndRegPBC(rootDir):
     # gen pb file.
@@ -116,8 +116,8 @@ def AutoGenPbc(rootDir):
     inFile = rootDir + "/Proto/Cmd.proto"
     outFile = rootDir +  "/Script/Network/EProtoMap.lua"
     outFile2 = rootDir + "/Script/Network/EProtoId.lua"
-    protoDir = rootDir + "/Proto/"
-    protoOutLuaFile = rootDir + "/Script/Network/EMsgId.lua"
+    # protoDir = rootDir + "/Proto/"
+    # protoOutLuaFile = rootDir + "/Script/Network/EMsgId.lua"
     cmdList = []
     with open(inFile, 'rb') as f:
         cmdList = [line.decode() for line in f.readlines()]
@@ -125,8 +125,8 @@ def AutoGenPbc(rootDir):
     AutoGenPbc_Map(cmdList , outFile) # gen protoMap.
     UPrint("AutoGenPbc_Id")
     AutoGenPbc_Id(cmdList , outFile2) # gen protoId.
-    UPrint("AutoGenPbc_Enum")
-    AutoGenPbc_Enum(protoDir ,protoOutLuaFile )# gen all msgEnum
+    #UPrint("AutoGenPbc_Enum")
+    #AutoGenPbc_Enum(protoDir ,protoOutLuaFile )# gen all msgEnum
     UPrint("AutoGenPbc")
     GenAndRegPBC(rootDir)
     UPrint("AutoGenPbc_CPP")

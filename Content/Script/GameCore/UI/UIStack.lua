@@ -58,7 +58,7 @@ end
 
 function class:clearUIWindows()
 	for _,window in ipairs(self.m_UIBaseArray) do 
-		window:destroy(bUIManager)
+		window:destroy()
 	end 
 	self.m_UIBaseArray = {}
 end

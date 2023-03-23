@@ -16,11 +16,21 @@ function class.AddMapEntry(msg)
 		stage.networkHandler:handleAddMapEntry(msg)
 	end
 end
+local mapId = nil
+function class.MapUserInfoCmd(msg)
+    if mapId == msg.id then 
+        return
+    end
+    mapId = msg.id
+    local mapInfo = GA.Game.MapInfo[msg.id]
+    local uiop = mapInfo.uiop
+    print("MapUserInfoCmd" , mapInfo.level)
+    gWorld.mapInfo = mapInfo
+    UE.UGameplayStatics.OpenLevel(gWorld:getWorldObject(), "LoadingMap", true)
+end
 
 function RequestMap(id)
-    gRequest.request = nil 
-    gRequest.type = gRefers.MT.GameScene
-    pbc.up.RequestMapCmd({id = id} , gRequest ,self.RequestMapAck )
+    pbc.up.RequestMapCmd({id = id} ,self.RequestMapAck )
 end
 
 function RequestMapAck(request , msg)

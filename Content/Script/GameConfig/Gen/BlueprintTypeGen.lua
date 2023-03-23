@@ -1,10 +1,7 @@
 local BpType = {
 	-- /Game\Blueprints start
-	BP_BasePlayAnim = '/Game/Blueprints/Character/BP_BasePlayAnim' ,
-	BP_OverLayAnim = '/Game/Blueprints/Character/BP_OverLayAnim' ,
-	BP_PlayAnim = '/Game/Blueprints/Character/BP_PlayAnim' ,
-	BP_PlayCharacter = '/Game/Blueprints/Character/BP_PlayCharacter' ,
-	BP_PlayCharacterBase = '/Game/Blueprints/Character/BP_PlayCharacterBase' ,
+	BP_Als_Player = '/Game/Blueprints/Character/BP_Als_Player' ,
+	BP_Als_PlayerController = '/Game/Blueprints/Character/BP_Als_PlayerController' ,
 	BP_PlayerController = '/Game/Blueprints/Character/BP_PlayerController' ,
 	BP_PlayerState = '/Game/Blueprints/Character/BP_PlayerState' ,
 	BP_GameOwner = '/Game/Blueprints/Owner/BP_GameOwner' ,
@@ -16,12 +13,18 @@ local BpType = {
 	-- /Game\Blueprints end
 
 	-- /Game\UI start
+	UI_BuildingWin = '/Game/UI/UI_BuildingWin' ,
 	UI_ItemBag = '/Game/UI/UI_ItemBag' ,
+	UI_LoadingWin = '/Game/UI/UI_LoadingWin' ,
 	UI_LoginWin = '/Game/UI/UI_LoginWin' ,
 	UI_MainWin = '/Game/UI/UI_MainWin' ,
+	UI_BuildingClassEntry = '/Game/UI/Entry/UI_BuildingClassEntry' ,
+	UI_BuildingItemEntry = '/Game/UI/Entry/UI_BuildingItemEntry' ,
 	UI_FunBtnEntry = '/Game/UI/Entry/UI_FunBtnEntry' ,
 	UI_PublicFunBtnEntry = '/Game/UI/Entry/UI_PublicFunBtnEntry' ,
 	UI_ItemGrid = '/Game/UI/Grid/UI_ItemGrid' ,
+	UI_BuildingBtn = '/Game/UI/MainWin/UI_BuildingBtn' ,
+	UI_BagParent = '/Game/UI/Parent/UI_BagParent' ,
 	UI_MainParent = '/Game/UI/Parent/UI_MainParent' ,
 	-- /Game\UI end
 

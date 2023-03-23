@@ -9,8 +9,8 @@ public class ZWorld : ModuleRules
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "ApexDestruction", });
-
-        PublicDependencyModuleNames.AddRange(new string[] { "UnLua", "Lua" , "ZLuaLib"});
+        PublicDependencyModuleNames.AddRange(new string[] { "MoviePlayer" ,"Slate","SlateCore","UMG"});
+        PublicDependencyModuleNames.AddRange(new string[] { "UnLua", "Lua" , "ZLuaLib", "Voxel"});
         PrivateDependencyModuleNames.AddRange(new string[] { });
         // avoid winsock.h and winsock2.h conflicts
         PublicDefinitions.Add("ASIO_STANDALONE");

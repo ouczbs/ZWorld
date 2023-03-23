@@ -1,4 +1,3 @@
-
 local class = class(GA.Network, "ProtoDown")
 
 class.ServerTimeUserCmd = function(msg)
