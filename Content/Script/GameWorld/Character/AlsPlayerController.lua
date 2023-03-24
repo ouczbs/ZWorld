@@ -1,10 +1,9 @@
 
 local class = Class()
 function class:Initialize(Initializer)
-    
+    print("Initialize AlsPlayerController")
 end
 function class:ReceiveBeginPlay()
-    print("AlsPlayerController", self:IsLocalController())
     if not self:IsLocalController() then 
         return
     end

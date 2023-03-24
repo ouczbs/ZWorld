@@ -48,23 +48,25 @@ function class:InitializeWorld(WorldContext)
     self:registerLuaManager("UIManager", GA.UI.UIManager)
 
     -- self:registerUManager("VoxelWorld", UE.AVoxelWorld, gLuaObject.AVoxelWorld)
-
+    self:registerUManager("MessageManager", UE.AMessageManager, gLuaObject.AMessageManager)
+    
     for key, luaclass in pairs(GA.initManagerList) do
         self:registerLuaManager(key, luaclass)
     end
     GA.initManagerList = nil
-    -- self.MessageManager:Connect(GameConfig.Host);
+    self.MessageManager:Connect(gGameConst.Host);
     -- local account = GA.Login.Account.new()
     -- account.account = "name"
     -- account.password = "psd"
     -- account:LoginAccountCmd()
     -- self.MessageManager:SendMessage("sad");
+    pbc.Send("hello message", 12)
 end
 function class:getWorldContext()
     return self._uWorldContext
 end
 function class:getWorldObject()
-    return UE.UGameplayStatics.GetPlayerPawn(self._uWorldContext, 0)
+    return self._uWorldContext
 end
 function class:getMainController()
     return UE.UGameplayStatics.GetPlayerController(self._uWorldContext, 0)

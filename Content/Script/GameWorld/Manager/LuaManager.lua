@@ -1,6 +1,6 @@
 --lua class : test_C
 
-local class = Class(GA.Manager, "LuaManager")
+local class = Class()
 function class:beginPlay()
 
 end

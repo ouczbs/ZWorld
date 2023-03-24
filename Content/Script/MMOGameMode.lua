@@ -1,23 +1,8 @@
 --lua class : SurviveGameMode
 ---@type MMOGameMode
 local class = UnLua.Class()
-require "World"
 
-function class:OverrideInitGame()
-    if not GA.initManagerList then 
-        gWorld:ReInitializeWorld(self:GetWorld())
-        return
-    end
-    GA.CreateGlobalVar()
-    pbc.EncodeConfig(GA.Config.Gui , "GuiConfig")
-    pbc.EncodeConfig(GA.Config.BP , "BPConfig")
-    --GA.Config.TestBP = pbc.DecodeConfig("BPConfig")
-    --创建各种message
-    local WorldContext = self:GetWorld()
-    gWorld:InitializeWorld(WorldContext)
-end
 function class:ReceiveBeginPlay()
-    print("ReceiveBeginPlay GameMode")
     if gWorld then
         gWorld:beginPlay()
     end
@@ -28,12 +13,6 @@ function class:ReceiveEndPlay()
 end
 --]]
 
-function class:ReceiveTick(DeltaSeconds)
-    if gWorld then
-        gWorld:tick(DeltaSeconds)
-        gWorld:lateTick(DeltaSeconds)
-    end
-end
 
 --[[
 function class:ReceiveAnyDamage(Damage, DamageType, InstigatedBy, DamageCauser)

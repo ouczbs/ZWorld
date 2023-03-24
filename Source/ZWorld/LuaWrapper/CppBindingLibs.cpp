@@ -1,5 +1,5 @@
 #include "CppBindingLibs.h"
-#include "System/MessageManager.h"
+#include "System/GameMessageSubsystem.h"
 namespace proto
 {
 	int _send(lua_State* L)
@@ -9,8 +9,8 @@ namespace proto
 		int id = luaL_checkinteger(L, 2);
 		std::string msg(c, len);
 
-		if (AMessageManager::CheckValid()) {
-			AMessageManager::I()->SendMessage(msg ,id );
+		if (auto Instance = UGameMessageSubsystem::GetInstance()) {
+			Instance->SendMessage(msg ,id );
 		}
 		return 1;
 	}

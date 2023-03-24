@@ -1,6 +1,6 @@
 --lua class : test_C
 
-local class = Class(GA.Manager, "MessageManager")
+local class = Class()
 
 function class:init()
     self:RegisterToGame()

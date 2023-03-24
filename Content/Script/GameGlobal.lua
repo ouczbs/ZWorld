@@ -16,6 +16,8 @@ function GA:AddInitManager(name, UManager)
 end
 serpent = require "Network.serpent"
 function GA.CreateGlobalVar()
+    _print = print
+    print = logE
     gRootPath = gRootPath or "../../../Content"
     gGameConst = GA.Config.GameConst
     gLuaObject = GA.Config.LuaObject

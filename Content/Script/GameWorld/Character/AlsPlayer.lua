@@ -1,7 +1,7 @@
 local class = Class()
 -- GA.Character.ALS_Character = class
 function class:Initialize(Initializer)
-    print("als init")
+    print("Initialize ALS_Character")
 end
 function class:ReceiveBeginPlay()
     self:RefreshOverlayObject()
