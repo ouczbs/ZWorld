@@ -9,7 +9,7 @@ public class ZWorldTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] { "GeneratedWorldGenerators" } );
+		//ExtraModuleNames.AddRange( new string[] { "GeneratedWorldGenerators" } );
 		ExtraModuleNames.Add("ZWorld");
 	}
 }

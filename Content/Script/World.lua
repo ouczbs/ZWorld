@@ -33,6 +33,7 @@ function class:registerUManager(key, uclass, script)
 end
 function class:CreateSubSystem()
     self.UGamePoolSubsystem = UE.UGameOwnerLibrary.GetGameSubsystem(UE.UGamePoolSubsystem)
+    self.UGameMessageSubsystem = UE.UGameOwnerLibrary.GetGameSubsystem(UE.UGameMessageSubsystem)
 end
 function class:ReInitializeWorld(WorldContext)
     self._uWorldContext = WorldContext
@@ -48,19 +49,18 @@ function class:InitializeWorld(WorldContext)
     self:registerLuaManager("UIManager", GA.UI.UIManager)
 
     -- self:registerUManager("VoxelWorld", UE.AVoxelWorld, gLuaObject.AVoxelWorld)
-    self:registerUManager("MessageManager", UE.AMessageManager, gLuaObject.AMessageManager)
     
     for key, luaclass in pairs(GA.initManagerList) do
         self:registerLuaManager(key, luaclass)
     end
     GA.initManagerList = nil
-    self.MessageManager:Connect(gGameConst.Host);
+    self.UGameMessageSubsystem:Connect(gGameConst.Host);
     -- local account = GA.Login.Account.new()
     -- account.account = "name"
     -- account.password = "psd"
     -- account:LoginAccountCmd()
-    -- self.MessageManager:SendMessage("sad");
-    pbc.Send("hello message", 12)
+    -- self.UGameMessageSubsystem:SendMessage("sad");
+    -- pbc.Send("hello message", 12)
 end
 function class:getWorldContext()
     return self._uWorldContext
@@ -75,7 +75,14 @@ function class:getMainPlayer()
     return UE.UGameplayStatics.GetPlayerPawn(self._uWorldContext, 0)
 end
 function class:beginPlay()
-    pbc.down.MapUserInfoCmd({id = 1})
+    print("world beginPlay " , self._uWorldContext:GetName())
+    local mapState = gWorld.MapManager.mapState
+    if mapState == 0 then
+        pbc.down.MapUserInfoCmd({id = 1})
+    elseif mapState == 1 then 
+        pbc.down.MapUserInfoCmd({id = 2})
+    end
+    gWorld.MapManager:updateMapState()
     -- local zero = UE.FVector(0.0, 0.0, 0.0)
     -- self.inputManage = GA.Manage.InputManage.new()
 

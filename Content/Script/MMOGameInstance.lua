@@ -23,6 +23,12 @@ function class:OverrideWorldChanged(_ , NewWorld)
         gWorld:ReInitializeWorld(NewWorld)
     end
 end
+function class:ReceiveBeginPlay()
+    print("BP_MMOGameInstance_C ReceiveBeginPlay")
+    if gWorld then
+        gWorld:beginPlay()
+    end
+end
 function class:ReceiveTick(dt)
     if gWorld then
         gWorld:tick(dt)

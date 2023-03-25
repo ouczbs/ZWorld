@@ -7,7 +7,7 @@ local item_list = {[1] = {
     name = "希望城",
     uiop = 1,
     package = "/Game/Map/ALSMap",
-    level = "ALSMap"
+    level = "MainMap"
 }}
 
 GA.Game.MapInfo = item_list

@@ -4,12 +4,11 @@
 #include "System/MMOGameInstance.h"
 #include "Unlua.h"
 #include "LuaWrapper/CppBindingLibs.h"
-#include "System/MessageManager.h"
 void UMMOGameInstance::Init()
 {
 	Super::Init();
-	FCoreUObjectDelegates::PreLoadMap.AddUObject(this, &UMMOGameInstance::BeginLoadingScreen);
-	FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UMMOGameInstance::EndLoadingScreen);
+	//FCoreUObjectDelegates::PreLoadMap.AddUObject(this, &UMMOGameInstance::BeginLoadingScreen);
+	//FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UMMOGameInstance::EndLoadingScreen);
 }
 
 void UMMOGameInstance::BeginLoadingScreen(const FString& MapName)
@@ -43,7 +42,13 @@ void UMMOGameInstance::Tick(float DeltaTime)
 void UMMOGameInstance::OnWorldChanged(UWorld* OldWorld, UWorld* NewWorld)
 {
 	Super::OnWorldChanged(OldWorld, NewWorld);
-	OverrideWorldChanged(OldWorld, NewWorld);
+	if (NewWorld) {
+		OverrideWorldChanged(OldWorld, NewWorld);
+		NewWorld->OnWorldBeginPlay.AddUObject(this, &UMMOGameInstance::BeginPlay);
+	}
+}
+void UMMOGameInstance::BeginPlay() {
+	ReceiveBeginPlay();
 }
 void UMMOGameInstance::OnStart()
 {

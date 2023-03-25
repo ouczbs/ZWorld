@@ -42,17 +42,9 @@ public:
     void OnReceiveMessage(std::vector<uint8_t> msg);
     void OnServerConnected(std::string remote);
     void OnServerDisconnected(std::string remote);
-
-	void setMessageSendEventDelegate(FSendMessageEvent msgDelegate);
-
-	TSharedPtr<FConvertJson2pb> GetJson2Pb() const { return _convertjson2pb; }
-
+	
 protected:
     void onSocket(Socket& s, int e, std::vector<uint8_t> b);
-
-protected:
-	FSendMessageEvent SendEventDelegate;
-    TSharedPtr<FConvertJson2pb> _convertjson2pb;
     
 private:
     std::string _remote;

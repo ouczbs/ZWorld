@@ -14,6 +14,7 @@ function class:Construct()
 end
 function class:onDestroy()
     UE.UGameplayStatics.OpenLevel(gWorld:getWorldObject(), self.level, true)
+    gWorld.MapManager:updateMapState(gWorld.MapManager.EMapState.Finish)
 end
 function class:onInit(data, param)
     self.package = param.package

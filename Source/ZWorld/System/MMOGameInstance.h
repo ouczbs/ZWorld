@@ -55,6 +55,9 @@ public:
             return false;
         return GetWorld()->HasBegunPlay();
     }
+	void BeginPlay();
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReceiveBeginPlay();
 public:
 	virtual void OnStart() override;
 	virtual void OnWorldChanged(UWorld* OldWorld, UWorld* NewWorld) override;

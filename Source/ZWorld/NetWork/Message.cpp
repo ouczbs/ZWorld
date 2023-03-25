@@ -1,7 +1,7 @@
 // Copyright 2018-2020 X.D. Network Inc. All Rights Reserved.
 
 #include "Message.h"
-#include "System/MessageManager.h"
+#include "System/GameMessageSubsystem.h"
 using namespace std::placeholders;
 
 Message::Message(const std::string &remote)
@@ -86,16 +86,10 @@ void Message::OnServerConnected(std::string remote)
 
 void Message::OnServerDisconnected(std::string remote)
 {
-	if (AMessageManager::CheckValid()) {
-		AMessageManager::I()->Disconnect();
+	if (auto Instance = UGameMessageSubsystem::GetInstance()) {
+		Instance->Disconnect();
 	}
 }
-
-void Message::setMessageSendEventDelegate(FSendMessageEvent msgDelegate)
-{
-	SendEventDelegate = msgDelegate;
-}
-
 void Message::onSocket(Socket& s, int e, std::vector<uint8_t> b)
 {
     switch (e)
